@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gma.System.MouseKeyHook;
+using NanoWallpaper.ControllerInterface;
 using NanoWallpaper.Utility;
 
 namespace NanoWallpaper
@@ -22,6 +23,9 @@ namespace NanoWallpaper
         {
             this.workerw = workerw;
             InitializeComponent();
+
+            this.Location = new Point(0, 0);
+            this.Size = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -32,7 +36,9 @@ namespace NanoWallpaper
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Win32Api.SetParent(this.Handle, workerw);
+            label6.Text = this.Handle.ToString();
+            Win32Api.SetParent(this.Handle, workerw);
+            label7.Text = this.Handle.ToString();
             Subscribe();
         }
 
@@ -42,8 +48,10 @@ namespace NanoWallpaper
             m_GlobalHook = Hook.GlobalEvents();
 
             m_GlobalHook.MouseDownExt += GlobalHookMouseDownExt;
-            m_GlobalHook.KeyPress += GlobalHookKeyPress;
+            m_GlobalHook.MouseUpExt += GlobalHookMouseUpExt;
+            m_GlobalHook.MouseClick += GlobalHookMouseClick;
             m_GlobalHook.MouseMoveExt += GlobalHookMouseMoveExt;
+            m_GlobalHook.KeyPress += GlobalHookKeyPress;
         }
 
         private void GlobalHookKeyPress(object sender, KeyPressEventArgs e)
@@ -53,14 +61,46 @@ namespace NanoWallpaper
 
         private void GlobalHookMouseDownExt(object sender, MouseEventExtArgs e)
         {
-            label4.Text = $@"MouseDown:{e.Button}; Point: {e.Location}";
+            //foreach (Control control in GetAllControls(this))
+            //{
+            //    if (control is IClickable clickableControl)
+            //    {
+            //        if (control.Location.X <= e.X && control.Location.Y <= e.Y && control.Location.X + control.Width >= e.X && control.Location.Y + control.Height >= e.Y)
+            //        {
+            //            clickableControl.OnClick(sender, e);
+            //        }
+            //    }
+            //}
+        }
 
-            // MK_LBUTTON = 0x0001
-            Win32Api.SendMessage(Win32Api.FindWindow(null, "제목 없음 - 그림판"), WindowsMessages.WM_LBUTTONDOWN, 1, MakeLParam(e.Location.X, e.Location.Y));
-            button1.Text = "asdf1";
-            // MK_LBUTTON = 0x0001
-            Win32Api.SendMessage(Win32Api.FindWindow(null, "제목 없음 - 그림판"), WindowsMessages.WM_LBUTTONUP, 0, MakeLParam(e.Location.X, e.Location.Y));
-            button1.Text = "asdf2";
+        private void GlobalHookMouseUpExt(object sender, MouseEventExtArgs e)
+        {
+            //foreach (Control control in GetAllControls(this))
+            //{
+            //    if (control is IClickable clickableControl)
+            //    {
+            //        if (control.Location.X <= e.X && control.Location.Y <= e.Y && control.Location.X + control.Width >= e.X && control.Location.Y + control.Height >= e.Y)
+            //        {
+            //            clickableControl.OnClick(sender, e);
+            //        }
+            //    }
+            //}
+        }
+
+        private void GlobalHookMouseClick(object sender, MouseEventArgs e)
+        {
+            foreach (Control control in GetAllControls(this))
+            {
+                if (control is IClickable clickableControl)
+                {
+                    var absolutePoint = control.PointToScreen(Point.Empty);
+
+                    if (absolutePoint.X <= e.X && absolutePoint.Y <= e.Y && absolutePoint.X + control.Width >= e.X && absolutePoint.Y + control.Height >= e.Y)
+                    {
+                        clickableControl.OnClick(sender, e);
+                    }
+                }
+            }
         }
 
         public int MakeLParam(int LoWord, int HiWord)
@@ -83,14 +123,28 @@ namespace NanoWallpaper
             m_GlobalHook.Dispose();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("asdf1234");
-        }
-
         private void Form1_Click(object sender, EventArgs e)
         {
-            button1.Text = "asdf";
+            label7.Text = "asdf";
+        }
+
+        private List<Control> GetAllControls(Control container, List<Control> list)
+        {
+            foreach (Control c in container.Controls)
+            {
+                list.Add(c);
+                if (c.Controls.Count > 0)
+                {
+                    list = GetAllControls(c, list);
+                }
+            }
+
+            return list;
+        }
+
+        private List<Control> GetAllControls(Control container)
+        {
+            return GetAllControls(container, new List<Control>());
         }
     }
 }

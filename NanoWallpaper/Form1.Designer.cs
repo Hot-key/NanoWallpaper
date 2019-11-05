@@ -29,14 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.testUserControl1 = new NanoWallpaper.NanoUserControl.TestUserControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.testUserControl2 = new NanoWallpaper.NanoUserControl.TestUserControl();
+            this.testUserControl3 = new NanoWallpaper.NanoUserControl.TestUserControl();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label1
             // 
@@ -47,11 +58,6 @@
             this.label1.Size = new System.Drawing.Size(38, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label2
             // 
@@ -93,44 +99,100 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "label5";
             // 
-            // button1
+            // label6
             // 
-            this.button1.Location = new System.Drawing.Point(521, 196);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 128);
+            this.label6.Margin = new System.Windows.Forms.Padding(5);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 12);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "label6";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(25, 150);
+            this.label7.Margin = new System.Windows.Forms.Padding(5);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 12);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "label7";
+            // 
+            // testUserControl1
+            // 
+            this.testUserControl1.BackColor = System.Drawing.Color.Red;
+            this.testUserControl1.Location = new System.Drawing.Point(414, 278);
+            this.testUserControl1.Name = "testUserControl1";
+            this.testUserControl1.Size = new System.Drawing.Size(276, 228);
+            this.testUserControl1.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.testUserControl3);
+            this.panel1.Controls.Add(this.testUserControl2);
+            this.panel1.Location = new System.Drawing.Point(225, 212);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 8;
+            // 
+            // testUserControl2
+            // 
+            this.testUserControl2.BackColor = System.Drawing.Color.Red;
+            this.testUserControl2.Location = new System.Drawing.Point(0, 3);
+            this.testUserControl2.Name = "testUserControl2";
+            this.testUserControl2.Size = new System.Drawing.Size(159, 75);
+            this.testUserControl2.TabIndex = 9;
+            // 
+            // testUserControl3
+            // 
+            this.testUserControl3.BackColor = System.Drawing.Color.Red;
+            this.testUserControl3.Location = new System.Drawing.Point(38, 25);
+            this.testUserControl3.Name = "testUserControl3";
+            this.testUserControl3.Size = new System.Drawing.Size(159, 75);
+            this.testUserControl3.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(957, 610);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.testUserControl1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private NanoUserControl.TestUserControl testUserControl1;
+        private System.Windows.Forms.Panel panel1;
+        private NanoUserControl.TestUserControl testUserControl3;
+        private NanoUserControl.TestUserControl testUserControl2;
     }
 }
 
