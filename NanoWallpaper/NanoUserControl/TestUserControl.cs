@@ -82,5 +82,12 @@ namespace NanoWallpaper.NanoUserControl
             label1.Text = this.Location.ToString();
             label4.Text = isFormMove.ToString();
         }
+
+        private void TestUserControl_Paint(object sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+
+            g.Clear(Color.FromArgb(200,66,66,66));
+        }
     }
 }

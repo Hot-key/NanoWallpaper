@@ -53,7 +53,10 @@ namespace NanoWallpaper
 
                 return true;
             }), IntPtr.Zero);
-            Application.Run(new Form1(workerw));
+
+            SettingData.LoadSetting();
+
+            Application.Run(new FormWallpaper(workerw));
         }
     }
 }

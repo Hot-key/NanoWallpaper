@@ -13,7 +13,7 @@ using NanoWallpaper.Utility;
 
 namespace NanoWallpaper
 {
-    public partial class Form1 : Form
+    public partial class FormWallpaper : Form
     {
         private IntPtr workerw;
 
@@ -21,7 +21,7 @@ namespace NanoWallpaper
 
         private List<Control> MouseDownList = new List<Control>();
 
-        public Form1(IntPtr workerw)
+        public FormWallpaper(IntPtr workerw)
         {
             this.workerw = workerw;
             InitializeComponent();
@@ -42,6 +42,8 @@ namespace NanoWallpaper
             Win32Api.SetParent(this.Handle, workerw);
             label7.Text = this.Handle.ToString();
             Subscribe();
+
+            LoadSetting();
         }
 
         public void Subscribe()
@@ -163,6 +165,19 @@ namespace NanoWallpaper
         private List<Control> GetAllControls(Control container)
         {
             return GetAllControls(container, new List<Control>());
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            new FormSetting(this).Show();
+        }
+
+        public void LoadSetting()
+        {
+            if (SettingData.BackgroundImagePos.Length > 0)
+            {
+                this.BackgroundImage = Image.FromFile(SettingData.BackgroundImagePos);
+            }
         }
     }
 }
