@@ -19,6 +19,8 @@ namespace NanoWallpaper
 
         private IKeyboardMouseEvents m_GlobalHook;
 
+        private List<Control> MouseDownList = new List<Control>();
+
         public Form1(IntPtr workerw)
         {
             this.workerw = workerw;
@@ -61,37 +63,41 @@ namespace NanoWallpaper
 
         private void GlobalHookMouseDownExt(object sender, MouseEventExtArgs e)
         {
-            //foreach (Control control in GetAllControls(this))
-            //{
-            //    if (control is IClickable clickableControl)
-            //    {
-            //        if (control.Location.X <= e.X && control.Location.Y <= e.Y && control.Location.X + control.Width >= e.X && control.Location.Y + control.Height >= e.Y)
-            //        {
-            //            clickableControl.OnClick(sender, e);
-            //        }
-            //    }
-            //}
+            foreach (Control control in GetAllControls(this))
+            {
+                if (control is IMouseDown clickableControl)
+                {
+                    var absolutePoint = control.PointToScreen(Point.Empty);
+
+                    if (absolutePoint.X <= e.X && absolutePoint.Y <= e.Y && absolutePoint.X + control.Width >= e.X && absolutePoint.Y + control.Height >= e.Y)
+                    {
+                        clickableControl.OnMouseDown(sender, e);
+                        MouseDownList.Add(control);
+                    }
+                }
+            }
         }
 
         private void GlobalHookMouseUpExt(object sender, MouseEventExtArgs e)
         {
-            //foreach (Control control in GetAllControls(this))
-            //{
-            //    if (control is IClickable clickableControl)
-            //    {
-            //        if (control.Location.X <= e.X && control.Location.Y <= e.Y && control.Location.X + control.Width >= e.X && control.Location.Y + control.Height >= e.Y)
-            //        {
-            //            clickableControl.OnClick(sender, e);
-            //        }
-            //    }
-            //}
+            foreach (Control control in MouseDownList)
+            {
+                if (control is IMouseUp clickableControl)
+                {
+                    clickableControl.OnMouseUp(sender, e);
+                }
+            }
+
+            MouseDownList.Clear();
         }
 
         private void GlobalHookMouseClick(object sender, MouseEventArgs e)
         {
+            label4.Text = $@"MouseClick:{e.Button}; Point: {e.Location}";
+
             foreach (Control control in GetAllControls(this))
             {
-                if (control is IClickable clickableControl)
+                if (control is IMouseClick clickableControl)
                 {
                     var absolutePoint = control.PointToScreen(Point.Empty);
 
@@ -112,6 +118,18 @@ namespace NanoWallpaper
         private void GlobalHookMouseMoveExt(object sender, MouseEventExtArgs e)
         {
             label5.Text = $@"MouseMove:{e.Button}; Point: {e.Location}";
+
+            foreach (Control control in GetAllControls(this))
+            {
+                if (control is IMouseMove clickableControl)
+                {
+                    var absolutePoint = control.PointToScreen(Point.Empty);
+                    if (absolutePoint.X <= e.X && absolutePoint.Y <= e.Y && absolutePoint.X + control.Width >= e.X && absolutePoint.Y + control.Height >= e.Y)
+                    {
+                        clickableControl.OnMouseMove(sender, e);
+                    }
+                }
+            }
         }
 
         public void Unsubscribe()

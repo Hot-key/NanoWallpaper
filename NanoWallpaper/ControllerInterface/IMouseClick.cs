@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NanoWallpaper.ControllerInterface
 {
-    interface IClickable
+    interface IMouseClick
     {
         void OnClick(object sender, System.EventArgs e);
     }

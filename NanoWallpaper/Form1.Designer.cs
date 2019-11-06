@@ -37,10 +37,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.testUserControl1 = new NanoWallpaper.NanoUserControl.TestUserControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.testUserControl2 = new NanoWallpaper.NanoUserControl.TestUserControl();
             this.testUserControl3 = new NanoWallpaper.NanoUserControl.TestUserControl();
+            this.testUserControl2 = new NanoWallpaper.NanoUserControl.TestUserControl();
+            this.testUserControl1 = new NanoWallpaper.NanoUserControl.TestUserControl();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,45 +119,45 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "label7";
             // 
-            // testUserControl1
-            // 
-            this.testUserControl1.BackColor = System.Drawing.Color.Red;
-            this.testUserControl1.Location = new System.Drawing.Point(414, 278);
-            this.testUserControl1.Name = "testUserControl1";
-            this.testUserControl1.Size = new System.Drawing.Size(276, 228);
-            this.testUserControl1.TabIndex = 7;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.testUserControl3);
             this.panel1.Controls.Add(this.testUserControl2);
-            this.panel1.Location = new System.Drawing.Point(225, 212);
+            this.panel1.Location = new System.Drawing.Point(147, 18);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.Size = new System.Drawing.Size(631, 404);
             this.panel1.TabIndex = 8;
+            // 
+            // testUserControl3
+            // 
+            this.testUserControl3.BackColor = System.Drawing.Color.Red;
+            this.testUserControl3.Location = new System.Drawing.Point(276, 44);
+            this.testUserControl3.Name = "testUserControl3";
+            this.testUserControl3.Size = new System.Drawing.Size(355, 278);
+            this.testUserControl3.TabIndex = 10;
             // 
             // testUserControl2
             // 
             this.testUserControl2.BackColor = System.Drawing.Color.Red;
             this.testUserControl2.Location = new System.Drawing.Point(0, 3);
             this.testUserControl2.Name = "testUserControl2";
-            this.testUserControl2.Size = new System.Drawing.Size(159, 75);
+            this.testUserControl2.Size = new System.Drawing.Size(159, 263);
             this.testUserControl2.TabIndex = 9;
             // 
-            // testUserControl3
+            // testUserControl1
             // 
-            this.testUserControl3.BackColor = System.Drawing.Color.Red;
-            this.testUserControl3.Location = new System.Drawing.Point(38, 25);
-            this.testUserControl3.Name = "testUserControl3";
-            this.testUserControl3.Size = new System.Drawing.Size(159, 75);
-            this.testUserControl3.TabIndex = 10;
+            this.testUserControl1.BackColor = System.Drawing.Color.Red;
+            this.testUserControl1.Location = new System.Drawing.Point(669, 404);
+            this.testUserControl1.Name = "testUserControl1";
+            this.testUserControl1.Size = new System.Drawing.Size(276, 228);
+            this.testUserControl1.TabIndex = 7;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(957, 610);
+            this.ClientSize = new System.Drawing.Size(1163, 721);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.testUserControl1);
             this.Controls.Add(this.label7);
@@ -167,6 +167,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
