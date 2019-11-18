@@ -42,6 +42,14 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="d2dlibexport, Version=1.1.0.16487, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\d2dlibexport.dll</HintPath>
+    </Reference>
+    <Reference Include="D2DLibWinForm, Version=1.1.0.16487, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\D2DLibWinForm.dll</HintPath>
+    </Reference>
     <Reference Include="Gma.System.MouseKeyHook, Version=5.6.130.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MouseKeyHook.5.6.0\lib\net40\Gma.System.MouseKeyHook.dll</HintPath>
     </Reference>
@@ -61,10 +69,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControllerInterface\ID2dBase.cs" />
+    <Compile Include="ControllerInterface\ID2dCollection.cs" />
     <Compile Include="ControllerInterface\IMouseClick.cs" />
     <Compile Include="ControllerInterface\IMouseDown.cs" />
     <Compile Include="ControllerInterface\IMouseMove.cs" />
     <Compile Include="ControllerInterface\IMouseUp.cs" />
+    <Compile Include="D2dController\NanoD2d.cs" />
+    <Compile Include="D2dController\NanoD2dCollection.cs" />
+    <Compile Include="D2dController\NanoD2dPanel.cs" />
     <Compile Include="FormSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,21 +92,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NanoUserControl\TestUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NanoUserControl\TestUserControl.Designer.cs">
-      <DependentUpon>TestUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="SettingData.cs" />
     <EmbeddedResource Include="FormSetting.resx">
       <DependentUpon>FormSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormWallpaper.resx">
       <DependentUpon>FormWallpaper.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NanoUserControl\TestUserControl.resx">
-      <DependentUpon>TestUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

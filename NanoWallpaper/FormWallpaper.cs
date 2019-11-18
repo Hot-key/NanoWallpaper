@@ -9,17 +9,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gma.System.MouseKeyHook;
 using NanoWallpaper.ControllerInterface;
+using NanoWallpaper.D2dController;
 using NanoWallpaper.Utility;
+using unvell.D2DLib;
+using unvell.D2DLib.WinForm;
 
 namespace NanoWallpaper
 {
-    public partial class FormWallpaper : Form
+    public partial class FormWallpaper : D2DForm
     {
+        private int count = 0;
+
         private IntPtr workerw;
 
         private IKeyboardMouseEvents m_GlobalHook;
 
-        private List<Control> MouseDownList = new List<Control>();
+        private List<NanoD2d> MouseDownList = new List<NanoD2d>();
+
+        private List<NanoD2d> coltroList = new List<NanoD2d>();
 
         public FormWallpaper(IntPtr workerw)
         {
@@ -28,6 +35,11 @@ namespace NanoWallpaper
 
             this.Location = new Point(0, 0);
             this.Size = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+
+            coltroList.Add(new NanoD2dPanel(this, new Point(100,400), new Size(200, 300)));
+
+            ShowFPS = true;
+            AnimationDraw = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -65,16 +77,17 @@ namespace NanoWallpaper
 
         private void GlobalHookMouseDownExt(object sender, MouseEventExtArgs e)
         {
-            foreach (Control control in GetAllControls(this))
+            if (Monitor.GetTopWindowText() == "")
             {
-                if (control is IMouseDown clickableControl)
+                foreach (NanoD2d control in coltroList)
                 {
-                    var absolutePoint = control.PointToScreen(Point.Empty);
-
-                    if (absolutePoint.X <= e.X && absolutePoint.Y <= e.Y && absolutePoint.X + control.Width >= e.X && absolutePoint.Y + control.Height >= e.Y)
+                    if (control is IMouseDown clickableControl)
                     {
-                        clickableControl.OnMouseDown(sender, e);
-                        MouseDownList.Add(control);
+                        if (control.Location.X <= e.X && control.Location.Y <= e.Y && control.Location.X + control.controlSize.Width >= e.X && control.Location.Y + control.controlSize.Height >= e.Y)
+                        {
+                            clickableControl.OnMouseDown(sender, e);
+                            MouseDownList.Add(control);
+                        }
                     }
                 }
             }
@@ -82,11 +95,14 @@ namespace NanoWallpaper
 
         private void GlobalHookMouseUpExt(object sender, MouseEventExtArgs e)
         {
-            foreach (Control control in MouseDownList)
+            if (Monitor.GetTopWindowText() == "")
             {
-                if (control is IMouseUp clickableControl)
+                foreach (NanoD2d control in MouseDownList)
                 {
-                    clickableControl.OnMouseUp(sender, e);
+                    if (control is IMouseUp clickableControl)
+                    {
+                        clickableControl.OnMouseUp(sender, e);
+                    }
                 }
             }
 
@@ -97,38 +113,35 @@ namespace NanoWallpaper
         {
             label4.Text = $@"MouseClick:{e.Button}; Point: {e.Location}";
 
-            foreach (Control control in GetAllControls(this))
+            if (Monitor.GetTopWindowText() == "")
             {
-                if (control is IMouseClick clickableControl)
+                foreach (NanoD2d control in coltroList)
                 {
-                    var absolutePoint = control.PointToScreen(Point.Empty);
-
-                    if (absolutePoint.X <= e.X && absolutePoint.Y <= e.Y && absolutePoint.X + control.Width >= e.X && absolutePoint.Y + control.Height >= e.Y)
+                    if (control is IMouseClick clickableControl)
                     {
-                        clickableControl.OnClick(sender, e);
+                        if (control.Location.X <= e.X && control.Location.Y <= e.Y && control.Location.X + control.controlSize.Width >= e.X && control.Location.Y + control.controlSize.Height >= e.Y)
+                        {
+                            clickableControl.OnClick(sender, e);
+                        }
                     }
                 }
             }
         }
 
-        public int MakeLParam(int LoWord, int HiWord)
-        {
-            return (int)((HiWord << 16) | (LoWord & 0xFFFF));
-        }
-
-
         private void GlobalHookMouseMoveExt(object sender, MouseEventExtArgs e)
         {
             label5.Text = $@"MouseMove:{e.Button}; Point: {e.Location}";
 
-            foreach (Control control in GetAllControls(this))
+            if (Monitor.GetTopWindowText() == "")
             {
-                if (control is IMouseMove clickableControl)
+                foreach (var control in coltroList)
                 {
-                    var absolutePoint = control.PointToScreen(Point.Empty);
-                    if (absolutePoint.X <= e.X && absolutePoint.Y <= e.Y && absolutePoint.X + control.Width >= e.X && absolutePoint.Y + control.Height >= e.Y)
+                    if (control is IMouseMove clickableControl)
                     {
-                        clickableControl.OnMouseMove(sender, e);
+                        if (control.Location.X <= e.X && control.Location.Y <= e.Y && control.Location.X + control.controlSize.Width >= e.X && control.Location.Y + control.controlSize.Height >= e.Y)
+                        {
+                            clickableControl.OnMouseMove(sender, e);
+                        }
                     }
                 }
             }
@@ -137,34 +150,12 @@ namespace NanoWallpaper
         public void Unsubscribe()
         {
             m_GlobalHook.MouseDownExt -= GlobalHookMouseDownExt;
+            m_GlobalHook.MouseUpExt -= GlobalHookMouseUpExt;
+            m_GlobalHook.MouseClick -= GlobalHookMouseClick;
+            m_GlobalHook.MouseMoveExt -= GlobalHookMouseMoveExt;
             m_GlobalHook.KeyPress -= GlobalHookKeyPress;
 
-            //It is recommened to dispose it
             m_GlobalHook.Dispose();
-        }
-
-        private void Form1_Click(object sender, EventArgs e)
-        {
-            label7.Text = "asdf";
-        }
-
-        private List<Control> GetAllControls(Control container, List<Control> list)
-        {
-            foreach (Control c in container.Controls)
-            {
-                list.Add(c);
-                if (c.Controls.Count > 0)
-                {
-                    list = GetAllControls(c, list);
-                }
-            }
-
-            return list;
-        }
-
-        private List<Control> GetAllControls(Control container)
-        {
-            return GetAllControls(container, new List<Control>());
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -176,8 +167,29 @@ namespace NanoWallpaper
         {
             if (SettingData.BackgroundImagePos.Length > 0)
             {
-                this.BackgroundImage = Image.FromFile(SettingData.BackgroundImagePos);
+                this.BackgroundImage = Device.LoadBitmap(SettingData.BackgroundImagePos);
             }
+        }
+
+        protected override void OnRender(D2DGraphics g)
+        {
+            base.OnRender(g);
+
+            count++;
+            label7.Text = count.ToString();
+
+            coltroList.ForEach(s=>
+            {
+                if (s is ID2dBase d2dBase)
+                {
+                    d2dBase.OnRender(g);
+                }
+            });
+        }
+
+        private void FormWallpaper_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Unsubscribe();
         }
     }
 }

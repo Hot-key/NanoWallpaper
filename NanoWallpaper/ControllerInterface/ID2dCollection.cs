@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace NanoWallpaper.ControllerInterface
 {
-    interface IMouseClick
+    interface ID2dCollection<T> : ICollection<T> where T : ID2dBase
     {
-        void OnClick(object sender, MouseEventArgs e);
+        
     }
 }
