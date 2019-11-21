@@ -26,7 +26,7 @@ namespace NanoWallpaper
 
         private List<NanoD2d> MouseDownList = new List<NanoD2d>();
 
-        private List<NanoD2d> coltroList = new List<NanoD2d>();
+        private NanoD2dCollection controls = new NanoD2dCollection();
 
         public FormWallpaper(IntPtr workerw)
         {
@@ -36,7 +36,17 @@ namespace NanoWallpaper
             this.Location = new Point(0, 0);
             this.Size = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
 
-            coltroList.Add(new NanoD2dPanel(this, new Point(100,400), new Size(200, 300)));
+            NanoD2dPanel panel = new NanoD2dPanel(this, new Point(100, 400), new Size(800, 700));
+            controls.Add(panel);
+
+            NanoD2dPanel panel2 = new NanoD2dPanel(this, new Point(65, 15), new Size(250, 340));
+            panel.Add(panel2);
+
+            NanoD2dPanel panel3 = new NanoD2dPanel(this, new Point(165, 115), new Size(430, 240));
+            panel.Add(panel3);
+
+            NanoD2dPanel panel4 = new NanoD2dPanel(this, new Point(65, 15), new Size(200, 200));
+            panel2.Add(panel4);
 
             ShowFPS = true;
             AnimationDraw = true;
@@ -79,14 +89,15 @@ namespace NanoWallpaper
         {
             if (Monitor.GetTopWindowText() == "")
             {
-                foreach (NanoD2d control in coltroList)
+                foreach (var (control, index) in GetAllTextBoxControls(controls).OrderByDescending(s => s.Item2))
                 {
                     if (control is IMouseDown clickableControl)
                     {
-                        if (control.Location.X <= e.X && control.Location.Y <= e.Y && control.Location.X + control.controlSize.Width >= e.X && control.Location.Y + control.controlSize.Height >= e.Y)
+                        if (control.AbsolutePosition.X <= e.X && control.AbsolutePosition.Y <= e.Y && control.AbsolutePosition.X + control.Size.Width >= e.X && control.AbsolutePosition.Y + control.Size.Height >= e.Y)
                         {
                             clickableControl.OnMouseDown(sender, e);
                             MouseDownList.Add(control);
+                            return;
                         }
                     }
                 }
@@ -115,13 +126,14 @@ namespace NanoWallpaper
 
             if (Monitor.GetTopWindowText() == "")
             {
-                foreach (NanoD2d control in coltroList)
+                foreach (var (control, index) in GetAllTextBoxControls(controls).OrderByDescending(s => s.Item2))
                 {
                     if (control is IMouseClick clickableControl)
                     {
-                        if (control.Location.X <= e.X && control.Location.Y <= e.Y && control.Location.X + control.controlSize.Width >= e.X && control.Location.Y + control.controlSize.Height >= e.Y)
+                        if (control.AbsolutePosition.X <= e.X && control.AbsolutePosition.Y <= e.Y && control.AbsolutePosition.X + control.Size.Width >= e.X && control.AbsolutePosition.Y + control.Size.Height >= e.Y)
                         {
                             clickableControl.OnClick(sender, e);
+                            return;
                         }
                     }
                 }
@@ -134,13 +146,14 @@ namespace NanoWallpaper
 
             if (Monitor.GetTopWindowText() == "")
             {
-                foreach (var control in coltroList)
+                foreach (var (control, index) in GetAllTextBoxControls(controls).OrderByDescending(s => s.Item2))
                 {
                     if (control is IMouseMove clickableControl)
                     {
-                        if (control.Location.X <= e.X && control.Location.Y <= e.Y && control.Location.X + control.controlSize.Width >= e.X && control.Location.Y + control.controlSize.Height >= e.Y)
+                        if (control.AbsolutePosition.X <= e.X && control.AbsolutePosition.Y <= e.Y && control.AbsolutePosition.X + control.Size.Width >= e.X && control.AbsolutePosition.Y + control.Size.Height >= e.Y)
                         {
                             clickableControl.OnMouseMove(sender, e);
+                            return;
                         }
                     }
                 }
@@ -178,18 +191,30 @@ namespace NanoWallpaper
             count++;
             label7.Text = count.ToString();
 
-            coltroList.ForEach(s=>
+            foreach (var (nanoD2d, index) in GetAllTextBoxControls(controls).OrderBy(s => s.Item2))
             {
-                if (s is ID2dBase d2dBase)
+                if (nanoD2d is ID2dBase d2dBase)
                 {
                     d2dBase.OnRender(g);
                 }
-            });
+            }
         }
 
         private void FormWallpaper_FormClosed(object sender, FormClosedEventArgs e)
         {
             Unsubscribe();
+        }
+
+        private List<Tuple<NanoD2d,int>> GetAllTextBoxControls(NanoD2d container, int index = 0)
+        {
+            List<Tuple<NanoD2d,int>> controlList = new List<Tuple<NanoD2d, int>>();
+            foreach (NanoD2d c in container.Controls)
+            {
+                controlList.AddRange(GetAllTextBoxControls(c, index + 1));
+                if (c != null)
+                    controlList.Add(Tuple.Create(c, index));
+            }
+            return controlList;
         }
     }
 }

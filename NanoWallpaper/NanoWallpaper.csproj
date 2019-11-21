@@ -77,6 +77,7 @@
     <Compile Include="ControllerInterface\IMouseUp.cs" />
     <Compile Include="D2dController\NanoD2d.cs" />
     <Compile Include="D2dController\NanoD2dCollection.cs" />
+    <Compile Include="D2dController\NanoD2dEnumerator.cs" />
     <Compile Include="D2dController\NanoD2dPanel.cs" />
     <Compile Include="FormSetting.cs">
       <SubType>Form</SubType>

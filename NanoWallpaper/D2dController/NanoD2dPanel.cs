@@ -12,25 +12,31 @@ using unvell.D2DLib.WinForm;
 
 namespace NanoWallpaper.D2dController
 {
-    public class NanoD2dPanel : NanoD2d, IMouseClick, IMouseDown, IMouseUp, IMouseMove
+    public class NanoD2dPanel : NanoD2dCollection, IMouseClick, IMouseDown, IMouseUp, IMouseMove
     {
         private readonly D2DForm form;
 
         private bool isFormMove = false;
         private Point basePoint;
 
-        private Color backColor = Color.FromArgb(180, 66, 66, 66);
+        private Color backColor = Color.FromArgb(120, 66, 66, 66);
+        private Color backColor2 = Color.FromArgb(120, 199, 172, 137);
 
-        public NanoD2dPanel(D2DForm form, Point location, Size controlSize)
+        public NanoD2dPanel(D2DForm form, Point location, Size size)
         {
             this.form = form;
             this.Location = location;
-            this.controlSize = controlSize;
+            this.Size = size;
+            this.Name = "NanoD2dPanel";
         }
 
         public override void OnRender(D2DGraphics g)
         {
-            g.FillRectangle(Location.X, Location.Y, controlSize.Width, controlSize.Height, D2DColor.FromGDIColor(backColor));
+            g.FillRectangle(AbsolutePosition.X, AbsolutePosition.Y, Size.Width, Size.Height, D2DColor.FromGDIColor(backColor));
+            // 
+            g.FillRectangle(AbsolutePosition.X + 5, AbsolutePosition.Y + 55, Size.Width - 10, Size.Height - 60, D2DColor.FromGDIColor(backColor2));
+
+            g.DrawText(this.Name, D2DColor.FromGDIColor(Color.FromArgb(230, 247, 243, 243)), new Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point), AbsolutePosition.X + 10, AbsolutePosition.Y + 10);
         }
 
         public void OnClick(object sender, MouseEventArgs e)

@@ -42,6 +42,7 @@ namespace NanoWallpaper
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,6 +138,7 @@ namespace NanoWallpaper
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
@@ -148,6 +150,18 @@ namespace NanoWallpaper
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(396, 161);
             this.panel1.TabIndex = 9;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(285, 38);
+            this.label8.Margin = new System.Windows.Forms.Padding(5);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 30);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "label8";
             // 
             // FormWallpaper
             // 
@@ -182,6 +196,7 @@ namespace NanoWallpaper
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label8;
     }
 }
 
