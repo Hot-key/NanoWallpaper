@@ -9,6 +9,7 @@ using unvell.D2DLib;
 
 namespace NanoWallpaper.D2dController
 {
+    [Serializable()]
     public class NanoD2d : ID2dBase
     {
         public Size Size { get; set; }
@@ -18,6 +19,8 @@ namespace NanoWallpaper.D2dController
         public string Name { get; set; }
 
         public virtual Point Location { get; set; }
+
+        public D2DBitmapGraphics bg;
 
         public Point AbsolutePosition => Parent == null ? Location : new Point(Parent.AbsolutePosition.X + Location.X, Parent.AbsolutePosition.Y + Location.Y);
 
@@ -34,6 +37,10 @@ namespace NanoWallpaper.D2dController
         }
 
         public virtual void OnRender(D2DGraphics g)
+        {
+        }
+
+        public virtual void OnPaint(D2DBitmapGraphics g)
         {
         }
     }

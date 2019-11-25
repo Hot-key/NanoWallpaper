@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.TextFieldImageLocation = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.BasicSetting = new System.Windows.Forms.TabPage();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.TextFieldImageLocation = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.WallPaperSetting = new System.Windows.Forms.TabPage();
+            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabControl1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.BasicSetting.SuspendLayout();
+            this.WallPaperSetting.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabControl1
@@ -43,8 +45,8 @@
             this.materialTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialTabControl1.Controls.Add(this.tabPage2);
-            this.materialTabControl1.Controls.Add(this.tabPage1);
+            this.materialTabControl1.Controls.Add(this.BasicSetting);
+            this.materialTabControl1.Controls.Add(this.WallPaperSetting);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Location = new System.Drawing.Point(0, 109);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -53,17 +55,34 @@
             this.materialTabControl1.Size = new System.Drawing.Size(554, 405);
             this.materialTabControl1.TabIndex = 0;
             // 
-            // tabPage2
+            // BasicSetting
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.White;
-            this.tabPage2.Controls.Add(this.materialRaisedButton1);
-            this.tabPage2.Controls.Add(this.TextFieldImageLocation);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(546, 379);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Basic setting";
+            this.BasicSetting.BackColor = System.Drawing.Color.White;
+            this.BasicSetting.Controls.Add(this.materialRaisedButton1);
+            this.BasicSetting.Controls.Add(this.TextFieldImageLocation);
+            this.BasicSetting.Location = new System.Drawing.Point(4, 22);
+            this.BasicSetting.Name = "BasicSetting";
+            this.BasicSetting.Padding = new System.Windows.Forms.Padding(3);
+            this.BasicSetting.Size = new System.Drawing.Size(546, 379);
+            this.BasicSetting.TabIndex = 1;
+            this.BasicSetting.Text = "Basic Setting";
+            // 
+            // materialRaisedButton1
+            // 
+            this.materialRaisedButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialRaisedButton1.AutoSize = true;
+            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Icon = null;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(426, 337);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(114, 36);
+            this.materialRaisedButton1.TabIndex = 2;
+            this.materialRaisedButton1.Text = "Save Setting";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
             // 
             // TextFieldImageLocation
             // 
@@ -84,15 +103,16 @@
             this.TextFieldImageLocation.UseSystemPasswordChar = false;
             this.TextFieldImageLocation.Click += new System.EventHandler(this.TextFieldImageLocation_Click);
             // 
-            // tabPage1
+            // WallPaperSetting
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(693, 467);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.WallPaperSetting.Controls.Add(this.materialRaisedButton2);
+            this.WallPaperSetting.Location = new System.Drawing.Point(4, 22);
+            this.WallPaperSetting.Name = "WallPaperSetting";
+            this.WallPaperSetting.Padding = new System.Windows.Forms.Padding(3);
+            this.WallPaperSetting.Size = new System.Drawing.Size(546, 379);
+            this.WallPaperSetting.TabIndex = 2;
+            this.WallPaperSetting.Text = "WallPaperSetting";
+            this.WallPaperSetting.UseVisualStyleBackColor = true;
             // 
             // materialTabSelector1
             // 
@@ -107,22 +127,21 @@
             this.materialTabSelector1.TabIndex = 1;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // materialRaisedButton1
+            // materialRaisedButton2
             // 
-            this.materialRaisedButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialRaisedButton1.AutoSize = true;
-            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(426, 337);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(114, 36);
-            this.materialRaisedButton1.TabIndex = 2;
-            this.materialRaisedButton1.Text = "Save Setting";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            this.materialRaisedButton2.AutoSize = true;
+            this.materialRaisedButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton2.Depth = 0;
+            this.materialRaisedButton2.Icon = null;
+            this.materialRaisedButton2.Location = new System.Drawing.Point(402, 337);
+            this.materialRaisedButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton2.Name = "materialRaisedButton2";
+            this.materialRaisedButton2.Primary = true;
+            this.materialRaisedButton2.Size = new System.Drawing.Size(138, 36);
+            this.materialRaisedButton2.TabIndex = 0;
+            this.materialRaisedButton2.Text = "Save WallPaper";
+            this.materialRaisedButton2.UseVisualStyleBackColor = true;
+            this.materialRaisedButton2.Click += new System.EventHandler(this.materialRaisedButton2_Click);
             // 
             // FormSetting
             // 
@@ -134,8 +153,10 @@
             this.Name = "FormSetting";
             this.Text = "FormSetting";
             this.materialTabControl1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.BasicSetting.ResumeLayout(false);
+            this.BasicSetting.PerformLayout();
+            this.WallPaperSetting.ResumeLayout(false);
+            this.WallPaperSetting.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -143,10 +164,11 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage BasicSetting;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private MaterialSkin.Controls.MaterialSingleLineTextField TextFieldImageLocation;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage WallPaperSetting;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
     }
 }

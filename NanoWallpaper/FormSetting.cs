@@ -48,10 +48,13 @@ namespace NanoWallpaper
 
         private void materialRaisedButton1_Click(object sender, EventArgs e)
         {
-            SettingData.BackgroundImagePos = TextFieldImageLocation.Text;
+            SettingData.SaveBasicSetting(TextFieldImageLocation.Text);
+            wallpaper.LoadSetting();
+        }
 
-            SettingData.SaveSetting();
-
+        private void materialRaisedButton2_Click(object sender, EventArgs e)
+        {
+            SettingData.SaveWallPaperSetting(wallpaper.controls);
             wallpaper.LoadSetting();
         }
     }

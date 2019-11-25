@@ -11,6 +11,8 @@ using Gma.System.MouseKeyHook;
 using NanoWallpaper.ControllerInterface;
 using NanoWallpaper.D2dController;
 using NanoWallpaper.Utility;
+using Newtonsoft.Json;
+using Polenter.Serialization;
 using unvell.D2DLib;
 using unvell.D2DLib.WinForm;
 
@@ -26,7 +28,7 @@ namespace NanoWallpaper
 
         private List<NanoD2d> MouseDownList = new List<NanoD2d>();
 
-        private NanoD2dCollection controls = new NanoD2dCollection();
+        public NanoD2dCollection controls = new NanoD2dCollection();
 
         public FormWallpaper(IntPtr workerw)
         {
@@ -182,6 +184,12 @@ namespace NanoWallpaper
             {
                 this.BackgroundImage = Device.LoadBitmap(SettingData.BackgroundImagePos);
             }
+            if (SettingData.WallPaperFormJosn.Length > 0)
+            {
+                var serializer = new SharpSerializer();
+
+                //this.controls = ;
+            }
         }
 
         protected override void OnRender(D2DGraphics g)
@@ -191,12 +199,17 @@ namespace NanoWallpaper
             count++;
             label7.Text = count.ToString();
 
-            foreach (var (nanoD2d, index) in GetAllTextBoxControls(controls).OrderBy(s => s.Item2))
+            foreach (var (nanoD2d, index) in GetAllTextBoxControls(controls).OrderByDescending(s => s.Item2))
             {
-                if (nanoD2d is ID2dBase d2dBase)
+                if (nanoD2d is NanoD2d d2dBase)
                 {
-                    d2dBase.OnRender(g);
+                    d2dBase.OnPaint(d2dBase.Parent.bg);
                 }
+            }
+
+            foreach (var nanoD2d in controls)
+            {
+                nanoD2d.OnRender(g);
             }
         }
 
@@ -215,6 +228,11 @@ namespace NanoWallpaper
                     controlList.Add(Tuple.Create(c, index));
             }
             return controlList;
+        }
+
+        public void SaveWallpaper()
+        {
+
         }
     }
 }
