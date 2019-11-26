@@ -45,6 +45,7 @@
             this.materialRaisedButton3 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.tabPageControl = new System.Windows.Forms.TabPage();
             this.materialTabControl1.SuspendLayout();
             this.tabPageBasic.SuspendLayout();
             this.tabPageWallPaper.SuspendLayout();
@@ -58,6 +59,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialTabControl1.Controls.Add(this.tabPageBasic);
             this.materialTabControl1.Controls.Add(this.tabPageWallPaper);
+            this.materialTabControl1.Controls.Add(this.tabPageControl);
             this.materialTabControl1.Controls.Add(this.tabPagePlugin);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Location = new System.Drawing.Point(0, 109);
@@ -86,7 +88,7 @@
             this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton1.Depth = 0;
             this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(438, 349);
+            this.materialRaisedButton1.Location = new System.Drawing.Point(436, 347);
             this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRaisedButton1.Name = "materialRaisedButton1";
             this.materialRaisedButton1.Primary = true;
@@ -98,6 +100,8 @@
             // 
             // TextFieldImageLocation
             // 
+            this.TextFieldImageLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextFieldImageLocation.BackColor = System.Drawing.Color.White;
             this.TextFieldImageLocation.Depth = 0;
             this.TextFieldImageLocation.Hint = "Set Image Location";
@@ -109,7 +113,7 @@
             this.TextFieldImageLocation.SelectedText = "";
             this.TextFieldImageLocation.SelectionLength = 0;
             this.TextFieldImageLocation.SelectionStart = 0;
-            this.TextFieldImageLocation.Size = new System.Drawing.Size(544, 23);
+            this.TextFieldImageLocation.Size = new System.Drawing.Size(542, 23);
             this.TextFieldImageLocation.TabIndex = 0;
             this.TextFieldImageLocation.TabStop = false;
             this.TextFieldImageLocation.UseSystemPasswordChar = false;
@@ -134,6 +138,7 @@
             // 
             // materialSingleLineTextField4
             // 
+            this.materialSingleLineTextField4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.materialSingleLineTextField4.BackColor = System.Drawing.Color.White;
             this.materialSingleLineTextField4.Depth = 0;
             this.materialSingleLineTextField4.Hint = "Set Y Pos";
@@ -152,6 +157,7 @@
             // 
             // materialSingleLineTextField5
             // 
+            this.materialSingleLineTextField5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.materialSingleLineTextField5.BackColor = System.Drawing.Color.White;
             this.materialSingleLineTextField5.Depth = 0;
             this.materialSingleLineTextField5.Hint = "Set Y Size";
@@ -206,6 +212,8 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(6, 6);
             this.comboBox1.Name = "comboBox1";
@@ -214,11 +222,12 @@
             // 
             // materialRaisedButton4
             // 
+            this.materialRaisedButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.materialRaisedButton4.AutoSize = true;
             this.materialRaisedButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton4.Depth = 0;
             this.materialRaisedButton4.Icon = null;
-            this.materialRaisedButton4.Location = new System.Drawing.Point(313, 337);
+            this.materialRaisedButton4.Location = new System.Drawing.Point(325, 347);
             this.materialRaisedButton4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRaisedButton4.Name = "materialRaisedButton4";
             this.materialRaisedButton4.Primary = true;
@@ -230,11 +239,12 @@
             // 
             // materialRaisedButton2
             // 
+            this.materialRaisedButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.materialRaisedButton2.AutoSize = true;
             this.materialRaisedButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton2.Depth = 0;
             this.materialRaisedButton2.Icon = null;
-            this.materialRaisedButton2.Location = new System.Drawing.Point(402, 337);
+            this.materialRaisedButton2.Location = new System.Drawing.Point(414, 347);
             this.materialRaisedButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRaisedButton2.Name = "materialRaisedButton2";
             this.materialRaisedButton2.Primary = true;
@@ -258,13 +268,16 @@
             // 
             // listBox1
             // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox1.Font = new System.Drawing.Font("Courier New", 9F);
             this.listBox1.FormattingEnabled = true;
             this.listBox1.IntegralHeight = false;
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(8, 35);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(542, 308);
+            this.listBox1.Size = new System.Drawing.Size(542, 306);
             this.listBox1.TabIndex = 5;
             // 
             // materialRaisedButton3
@@ -274,7 +287,7 @@
             this.materialRaisedButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton3.Depth = 0;
             this.materialRaisedButton3.Icon = null;
-            this.materialRaisedButton3.Location = new System.Drawing.Point(437, 349);
+            this.materialRaisedButton3.Location = new System.Drawing.Point(436, 347);
             this.materialRaisedButton3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRaisedButton3.Name = "materialRaisedButton3";
             this.materialRaisedButton3.Primary = true;
@@ -286,6 +299,8 @@
             // 
             // materialSingleLineTextField1
             // 
+            this.materialSingleLineTextField1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.materialSingleLineTextField1.BackColor = System.Drawing.Color.White;
             this.materialSingleLineTextField1.Depth = 0;
             this.materialSingleLineTextField1.Hint = "Set Plug-in Location";
@@ -315,6 +330,15 @@
             this.materialTabSelector1.Size = new System.Drawing.Size(566, 44);
             this.materialTabSelector1.TabIndex = 1;
             this.materialTabSelector1.Text = "materialTabSelector1";
+            // 
+            // tabPageControl
+            // 
+            this.tabPageControl.Location = new System.Drawing.Point(4, 22);
+            this.tabPageControl.Name = "tabPageControl";
+            this.tabPageControl.Size = new System.Drawing.Size(558, 391);
+            this.tabPageControl.TabIndex = 4;
+            this.tabPageControl.Text = "controlSetting";
+            this.tabPageControl.UseVisualStyleBackColor = true;
             // 
             // FormSetting
             // 
@@ -356,5 +380,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField2;
         private System.Windows.Forms.ComboBox comboBox1;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton4;
+        private System.Windows.Forms.TabPage tabPageControl;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,11 @@ namespace NanoWallpaper
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            if (!Directory.Exists("./Plugin"))
+            {
+                Directory.CreateDirectory("./Plugin");
+            }
 
             ScreenUtility.PrintVisibleWindowHandles(2);
 
