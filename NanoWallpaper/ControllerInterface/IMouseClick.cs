@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace NanoWallpaper.ControllerInterface
 {
-    interface IMouseClick
+    public interface IMouseClick
     {
         void OnClick(object sender, MouseEventArgs e);
     }

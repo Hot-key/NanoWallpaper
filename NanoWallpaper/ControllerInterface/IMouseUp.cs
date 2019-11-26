@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace NanoWallpaper.ControllerInterface
 {
-    interface IMouseUp
+    public interface IMouseUp
     {
         void OnMouseUp(object sender, MouseEventArgs e);
     }

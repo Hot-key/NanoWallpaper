@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace NanoWallpaper.ControllerInterface
 {
-    interface IMouseMove
+    public interface IMouseMove
     {
         void OnMouseMove(object sender, MouseEventArgs e);
     }

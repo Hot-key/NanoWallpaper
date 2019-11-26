@@ -38,17 +38,29 @@ namespace NanoWallpaper
             this.Location = new Point(0, 0);
             this.Size = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
 
-            NanoD2dPanel panel = new NanoD2dPanel(this, new Point(100, 400), new Size(800, 700));
-            controls.Add(panel);
+            NanoD2dTitlePanel nanoPanel1 = new NanoD2dTitlePanel(this, new Point(700, 400), new Size(800, 700));
+            NanoD2dTitlePanel nanoPanel1_1 = new NanoD2dTitlePanel(this, new Point(65, 15), new Size(250, 340));
+            NanoD2dTitlePanel nanoPanel1_1_1 = new NanoD2dTitlePanel(this, new Point(65, 15), new Size(200, 200));
 
-            NanoD2dPanel panel2 = new NanoD2dPanel(this, new Point(65, 15), new Size(250, 340));
-            panel.Add(panel2);
+            controls.Add(nanoPanel1);
+            nanoPanel1.Add(nanoPanel1_1);
+            nanoPanel1_1.Add(nanoPanel1_1_1);
 
-            NanoD2dPanel panel3 = new NanoD2dPanel(this, new Point(165, 115), new Size(430, 240));
-            panel.Add(panel3);
+            NanoD2dTitlePanel nanoPanel2 = new NanoD2dTitlePanel(this, new Point(100, 400), new Size(800, 700));
+            NanoD2dTitlePanel nanoPanel2_1 = new NanoD2dTitlePanel(this, new Point(165, 115), new Size(430, 240));
 
-            NanoD2dPanel panel4 = new NanoD2dPanel(this, new Point(65, 15), new Size(200, 200));
-            panel2.Add(panel4);
+            controls.Add(nanoPanel2);
+            nanoPanel2.Add(nanoPanel2_1);
+
+            NanoD2dTitlePanel nanoPanel3 = new NanoD2dTitlePanel(this, new Point(100, 400), new Size(800, 700));
+            NanoD2dPanel nanoPanel3_1 = new NanoD2dPanel(this, new Point(165, 115), new Size(430, 240));
+
+            controls.Add(nanoPanel3);
+            nanoPanel3.Add(nanoPanel3_1);
+
+            //NanoGitLog gitLog = new NanoGitLog(this, new Point(1100,300), new Size(722, 108));
+
+            //controls.Add(gitLog);
 
             ShowFPS = true;
             AnimationDraw = true;
@@ -196,14 +208,37 @@ namespace NanoWallpaper
         {
             base.OnRender(g);
 
+            foreach (var (nanoD2d, index) in GetAllTextBoxControls(controls).OrderBy(s => s.Item2))
+            {
+                nanoD2d.bg?.BeginRender();
+                nanoD2d.bg?.Clear(D2DColor.Transparent);
+                nanoD2d.bg?.EndRender();
+            }
+
             count++;
             label7.Text = count.ToString();
 
+            foreach (var (nanoD2d, index) in GetAllTextBoxControls(controls).OrderBy(s => s.Item2))
+            {
+                if (index != 0)
+                {
+                    nanoD2d.OnPaint(new Point(0, 0));
+                }
+                else
+                {
+                    nanoD2d.OnPaint(new Point(0, 0));
+                }
+            }
+
             foreach (var (nanoD2d, index) in GetAllTextBoxControls(controls).OrderByDescending(s => s.Item2))
             {
-                if (nanoD2d is NanoD2d d2dBase)
+                if (index != 0)
                 {
-                    d2dBase.OnPaint(d2dBase.Parent.bg);
+                    var rect = new D2DRect(nanoD2d.Location.X, nanoD2d.Location.Y, nanoD2d.Size.Width, nanoD2d.Size.Height);
+
+                    nanoD2d.Parent?.bg?.BeginRender();
+                    nanoD2d.Parent?.bg?.DrawBitmap(nanoD2d.bg, rect);
+                    nanoD2d.Parent?.bg?.EndRender();
                 }
             }
 

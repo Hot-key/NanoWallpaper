@@ -20,7 +20,7 @@ namespace NanoWallpaper.D2dController
 
         public virtual Point Location { get; set; }
 
-        public D2DBitmapGraphics bg;
+        public D2DBitmapGraphics bg { get; protected set; }
 
         public Point AbsolutePosition => Parent == null ? Location : new Point(Parent.AbsolutePosition.X + Location.X, Parent.AbsolutePosition.Y + Location.Y);
 
@@ -40,7 +40,11 @@ namespace NanoWallpaper.D2dController
         {
         }
 
-        public virtual void OnPaint(D2DBitmapGraphics g)
+        public virtual void OnPaint()
+        {
+        }
+
+        public virtual void OnPaint(Point point)
         {
         }
     }
