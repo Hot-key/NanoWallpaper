@@ -30,6 +30,8 @@ namespace NanoWallpaper
 
         public NanoD2dCollection controls = new NanoD2dCollection();
 
+        //private FormSetting settingForm;
+
         public FormWallpaper(IntPtr workerw)
         {
             this.workerw = workerw;
@@ -37,6 +39,8 @@ namespace NanoWallpaper
 
             this.Location = new Point(0, 0);
             this.Size = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+
+            //settingForm = new FormSetting(this);
 
             NanoD2dTitlePanel nanoPanel1 = new NanoD2dTitlePanel(this, new Point(700, 400), new Size(800, 700));
             NanoD2dTitlePanel nanoPanel1_1 = new NanoD2dTitlePanel(this, new Point(65, 15), new Size(250, 340));
@@ -187,6 +191,7 @@ namespace NanoWallpaper
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            //settingForm.Show();
             new FormSetting(this).Show();
         }
 

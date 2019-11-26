@@ -53,9 +53,6 @@
     <Reference Include="Gma.System.MouseKeyHook, Version=5.6.130.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MouseKeyHook.5.6.0\lib\net40\Gma.System.MouseKeyHook.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.11.17.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.11.17\lib\Net45\HtmlAgilityPack.dll</HintPath>
-    </Reference>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.Updated.0.2.2\lib\MaterialSkin.dll</HintPath>
     </Reference>
@@ -89,7 +86,6 @@
     <Compile Include="D2dController\NanoD2dEnumerator.cs" />
     <Compile Include="D2dController\NanoD2dPanel.cs" />
     <Compile Include="D2dController\NanoD2dTitlePanel.cs" />
-    <Compile Include="D2dController\NanoGitLog.cs" />
     <Compile Include="FormSetting.cs">
       <SubType>Form</SubType>
     </Compile>

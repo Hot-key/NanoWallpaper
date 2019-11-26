@@ -55,6 +55,7 @@ namespace GithubHistory
 
         public void OnClick(object sender, MouseEventArgs e)
         {
+            // 이후 닉네임 설정 추가
         }
 
         public void OnMouseDown(object sender, MouseEventArgs e)
@@ -87,11 +88,11 @@ namespace GithubHistory
         {
             bg.BeginRender();
             bg.FillRectangle(0, 0, this.Size.Width, this.Size.Height, D2DColor.FromGDIColor(Color.FromArgb(230, 225, 225, 225)));
-            for (var i = 0; i < gitColor.Count; i++)
+            for (var i = 15; i < gitColor.Count; i++)
             {
                 for (var j = 0; j < gitColor[i].Count; j++)
                 {
-                    bg.FillRectangle(13 * i, 13 * j, 10, 10, D2DColor.FromGDIColor(gitColor[i][j]));
+                    bg.FillRectangle(13 * (i - 15) + 3, 13 * j + 3, 10, 10, D2DColor.FromGDIColor(gitColor[i][j]));
                 }
             }
             isRender = false;
@@ -102,11 +103,11 @@ namespace GithubHistory
         {
             bg.BeginRender();
             bg.FillRectangle(offSet.X, offSet.Y, this.Size.Width, this.Size.Height, D2DColor.FromGDIColor(Color.FromArgb(230, 225, 225, 225)));
-            for (var i = 0; i < gitColor.Count; i++)
+            for (var i = 15; i < gitColor.Count; i++)
             {
                 for (var j = 0; j < gitColor[i].Count; j++)
                 {
-                    bg.FillRectangle(offSet.X + 13 * i, offSet.Y + 13 * j, 10, 10, D2DColor.FromGDIColor(gitColor[i][j]));
+                    bg.FillRectangle(offSet.X + 13 * (i - 15) + 3, offSet.Y + 13 * j + 3, 10, 10, D2DColor.FromGDIColor(gitColor[i][j]));
                 }
             }
             isRender = false;
@@ -138,6 +139,7 @@ namespace GithubHistory
             }
             else
             {
+                // todo : 이후 입력창을 만들면 사용
                 MessageBox.Show("닉네임 입력이 필요합니다.", "오류!");
             }
         }

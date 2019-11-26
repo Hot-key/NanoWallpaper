@@ -29,15 +29,26 @@
         private void InitializeComponent()
         {
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
-            this.BasicSetting = new System.Windows.Forms.TabPage();
+            this.tabPageBasic = new System.Windows.Forms.TabPage();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TextFieldImageLocation = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.WallPaperSetting = new System.Windows.Forms.TabPage();
-            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.tabPageWallPaper = new System.Windows.Forms.TabPage();
+            this.materialSingleLineTextField4 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField5 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.materialRaisedButton4 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.tabPagePlugin = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.materialRaisedButton3 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1.SuspendLayout();
-            this.BasicSetting.SuspendLayout();
-            this.WallPaperSetting.SuspendLayout();
+            this.tabPageBasic.SuspendLayout();
+            this.tabPageWallPaper.SuspendLayout();
+            this.tabPagePlugin.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabControl1
@@ -45,27 +56,28 @@
             this.materialTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialTabControl1.Controls.Add(this.BasicSetting);
-            this.materialTabControl1.Controls.Add(this.WallPaperSetting);
+            this.materialTabControl1.Controls.Add(this.tabPageBasic);
+            this.materialTabControl1.Controls.Add(this.tabPageWallPaper);
+            this.materialTabControl1.Controls.Add(this.tabPagePlugin);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Location = new System.Drawing.Point(0, 109);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(554, 405);
+            this.materialTabControl1.Size = new System.Drawing.Size(566, 417);
             this.materialTabControl1.TabIndex = 0;
             // 
-            // BasicSetting
+            // tabPageBasic
             // 
-            this.BasicSetting.BackColor = System.Drawing.Color.White;
-            this.BasicSetting.Controls.Add(this.materialRaisedButton1);
-            this.BasicSetting.Controls.Add(this.TextFieldImageLocation);
-            this.BasicSetting.Location = new System.Drawing.Point(4, 22);
-            this.BasicSetting.Name = "BasicSetting";
-            this.BasicSetting.Padding = new System.Windows.Forms.Padding(3);
-            this.BasicSetting.Size = new System.Drawing.Size(546, 379);
-            this.BasicSetting.TabIndex = 1;
-            this.BasicSetting.Text = "Basic Setting";
+            this.tabPageBasic.BackColor = System.Drawing.Color.White;
+            this.tabPageBasic.Controls.Add(this.materialRaisedButton1);
+            this.tabPageBasic.Controls.Add(this.TextFieldImageLocation);
+            this.tabPageBasic.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBasic.Name = "tabPageBasic";
+            this.tabPageBasic.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageBasic.Size = new System.Drawing.Size(558, 391);
+            this.tabPageBasic.TabIndex = 1;
+            this.tabPageBasic.Text = "Basic Setting";
             // 
             // materialRaisedButton1
             // 
@@ -74,7 +86,7 @@
             this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton1.Depth = 0;
             this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(426, 337);
+            this.materialRaisedButton1.Location = new System.Drawing.Point(438, 349);
             this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRaisedButton1.Name = "materialRaisedButton1";
             this.materialRaisedButton1.Primary = true;
@@ -97,35 +109,124 @@
             this.TextFieldImageLocation.SelectedText = "";
             this.TextFieldImageLocation.SelectionLength = 0;
             this.TextFieldImageLocation.SelectionStart = 0;
-            this.TextFieldImageLocation.Size = new System.Drawing.Size(679, 23);
+            this.TextFieldImageLocation.Size = new System.Drawing.Size(544, 23);
             this.TextFieldImageLocation.TabIndex = 0;
             this.TextFieldImageLocation.TabStop = false;
             this.TextFieldImageLocation.UseSystemPasswordChar = false;
             this.TextFieldImageLocation.Click += new System.EventHandler(this.TextFieldImageLocation_Click);
             // 
-            // WallPaperSetting
+            // tabPageWallPaper
             // 
-            this.WallPaperSetting.Controls.Add(this.materialRaisedButton2);
-            this.WallPaperSetting.Location = new System.Drawing.Point(4, 22);
-            this.WallPaperSetting.Name = "WallPaperSetting";
-            this.WallPaperSetting.Padding = new System.Windows.Forms.Padding(3);
-            this.WallPaperSetting.Size = new System.Drawing.Size(546, 379);
-            this.WallPaperSetting.TabIndex = 2;
-            this.WallPaperSetting.Text = "WallPaperSetting";
-            this.WallPaperSetting.UseVisualStyleBackColor = true;
+            this.tabPageWallPaper.BackColor = System.Drawing.Color.White;
+            this.tabPageWallPaper.Controls.Add(this.materialSingleLineTextField4);
+            this.tabPageWallPaper.Controls.Add(this.materialSingleLineTextField5);
+            this.tabPageWallPaper.Controls.Add(this.materialSingleLineTextField3);
+            this.tabPageWallPaper.Controls.Add(this.materialSingleLineTextField2);
+            this.tabPageWallPaper.Controls.Add(this.comboBox1);
+            this.tabPageWallPaper.Controls.Add(this.materialRaisedButton4);
+            this.tabPageWallPaper.Controls.Add(this.materialRaisedButton2);
+            this.tabPageWallPaper.Location = new System.Drawing.Point(4, 22);
+            this.tabPageWallPaper.Name = "tabPageWallPaper";
+            this.tabPageWallPaper.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageWallPaper.Size = new System.Drawing.Size(558, 391);
+            this.tabPageWallPaper.TabIndex = 2;
+            this.tabPageWallPaper.Text = "WallPaperSetting";
             // 
-            // materialTabSelector1
+            // materialSingleLineTextField4
             // 
-            this.materialTabSelector1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
-            this.materialTabSelector1.Depth = 0;
-            this.materialTabSelector1.Location = new System.Drawing.Point(0, 59);
-            this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(566, 44);
-            this.materialTabSelector1.TabIndex = 1;
-            this.materialTabSelector1.Text = "materialTabSelector1";
+            this.materialSingleLineTextField4.BackColor = System.Drawing.Color.White;
+            this.materialSingleLineTextField4.Depth = 0;
+            this.materialSingleLineTextField4.Hint = "Set Y Pos";
+            this.materialSingleLineTextField4.Location = new System.Drawing.Point(284, 32);
+            this.materialSingleLineTextField4.MaxLength = 32767;
+            this.materialSingleLineTextField4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField4.Name = "materialSingleLineTextField4";
+            this.materialSingleLineTextField4.PasswordChar = '\0';
+            this.materialSingleLineTextField4.SelectedText = "";
+            this.materialSingleLineTextField4.SelectionLength = 0;
+            this.materialSingleLineTextField4.SelectionStart = 0;
+            this.materialSingleLineTextField4.Size = new System.Drawing.Size(268, 23);
+            this.materialSingleLineTextField4.TabIndex = 11;
+            this.materialSingleLineTextField4.TabStop = false;
+            this.materialSingleLineTextField4.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField5
+            // 
+            this.materialSingleLineTextField5.BackColor = System.Drawing.Color.White;
+            this.materialSingleLineTextField5.Depth = 0;
+            this.materialSingleLineTextField5.Hint = "Set Y Size";
+            this.materialSingleLineTextField5.Location = new System.Drawing.Point(283, 61);
+            this.materialSingleLineTextField5.MaxLength = 32767;
+            this.materialSingleLineTextField5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField5.Name = "materialSingleLineTextField5";
+            this.materialSingleLineTextField5.PasswordChar = '\0';
+            this.materialSingleLineTextField5.SelectedText = "";
+            this.materialSingleLineTextField5.SelectionLength = 0;
+            this.materialSingleLineTextField5.SelectionStart = 0;
+            this.materialSingleLineTextField5.Size = new System.Drawing.Size(268, 23);
+            this.materialSingleLineTextField5.TabIndex = 13;
+            this.materialSingleLineTextField5.TabStop = false;
+            this.materialSingleLineTextField5.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField3
+            // 
+            this.materialSingleLineTextField3.BackColor = System.Drawing.Color.White;
+            this.materialSingleLineTextField3.Depth = 0;
+            this.materialSingleLineTextField3.Hint = "Set X pos";
+            this.materialSingleLineTextField3.Location = new System.Drawing.Point(7, 32);
+            this.materialSingleLineTextField3.MaxLength = 32767;
+            this.materialSingleLineTextField3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField3.Name = "materialSingleLineTextField3";
+            this.materialSingleLineTextField3.PasswordChar = '\0';
+            this.materialSingleLineTextField3.SelectedText = "";
+            this.materialSingleLineTextField3.SelectionLength = 0;
+            this.materialSingleLineTextField3.SelectionStart = 0;
+            this.materialSingleLineTextField3.Size = new System.Drawing.Size(268, 23);
+            this.materialSingleLineTextField3.TabIndex = 10;
+            this.materialSingleLineTextField3.TabStop = false;
+            this.materialSingleLineTextField3.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField2
+            // 
+            this.materialSingleLineTextField2.BackColor = System.Drawing.Color.White;
+            this.materialSingleLineTextField2.Depth = 0;
+            this.materialSingleLineTextField2.Hint = "Set X Size";
+            this.materialSingleLineTextField2.Location = new System.Drawing.Point(6, 61);
+            this.materialSingleLineTextField2.MaxLength = 32767;
+            this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
+            this.materialSingleLineTextField2.PasswordChar = '\0';
+            this.materialSingleLineTextField2.SelectedText = "";
+            this.materialSingleLineTextField2.SelectionLength = 0;
+            this.materialSingleLineTextField2.SelectionStart = 0;
+            this.materialSingleLineTextField2.Size = new System.Drawing.Size(268, 23);
+            this.materialSingleLineTextField2.TabIndex = 12;
+            this.materialSingleLineTextField2.TabStop = false;
+            this.materialSingleLineTextField2.UseSystemPasswordChar = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(6, 6);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(546, 20);
+            this.comboBox1.TabIndex = 2;
+            // 
+            // materialRaisedButton4
+            // 
+            this.materialRaisedButton4.AutoSize = true;
+            this.materialRaisedButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton4.Depth = 0;
+            this.materialRaisedButton4.Icon = null;
+            this.materialRaisedButton4.Location = new System.Drawing.Point(313, 337);
+            this.materialRaisedButton4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton4.Name = "materialRaisedButton4";
+            this.materialRaisedButton4.Primary = true;
+            this.materialRaisedButton4.Size = new System.Drawing.Size(83, 36);
+            this.materialRaisedButton4.TabIndex = 14;
+            this.materialRaisedButton4.Text = "Add Item";
+            this.materialRaisedButton4.UseVisualStyleBackColor = true;
+            this.materialRaisedButton4.Click += new System.EventHandler(this.materialRaisedButton4_Click);
             // 
             // materialRaisedButton2
             // 
@@ -143,6 +244,78 @@
             this.materialRaisedButton2.UseVisualStyleBackColor = true;
             this.materialRaisedButton2.Click += new System.EventHandler(this.materialRaisedButton2_Click);
             // 
+            // tabPagePlugin
+            // 
+            this.tabPagePlugin.BackColor = System.Drawing.Color.White;
+            this.tabPagePlugin.Controls.Add(this.listBox1);
+            this.tabPagePlugin.Controls.Add(this.materialRaisedButton3);
+            this.tabPagePlugin.Controls.Add(this.materialSingleLineTextField1);
+            this.tabPagePlugin.Location = new System.Drawing.Point(4, 22);
+            this.tabPagePlugin.Name = "tabPagePlugin";
+            this.tabPagePlugin.Size = new System.Drawing.Size(558, 391);
+            this.tabPagePlugin.TabIndex = 3;
+            this.tabPagePlugin.Text = "Plug-in";
+            // 
+            // listBox1
+            // 
+            this.listBox1.Font = new System.Drawing.Font("Courier New", 9F);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.IntegralHeight = false;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(8, 35);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(542, 308);
+            this.listBox1.TabIndex = 5;
+            // 
+            // materialRaisedButton3
+            // 
+            this.materialRaisedButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialRaisedButton3.AutoSize = true;
+            this.materialRaisedButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton3.Depth = 0;
+            this.materialRaisedButton3.Icon = null;
+            this.materialRaisedButton3.Location = new System.Drawing.Point(437, 349);
+            this.materialRaisedButton3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton3.Name = "materialRaisedButton3";
+            this.materialRaisedButton3.Primary = true;
+            this.materialRaisedButton3.Size = new System.Drawing.Size(114, 36);
+            this.materialRaisedButton3.TabIndex = 4;
+            this.materialRaisedButton3.Text = "Save Setting";
+            this.materialRaisedButton3.UseVisualStyleBackColor = true;
+            this.materialRaisedButton3.Click += new System.EventHandler(this.materialRaisedButton3_Click);
+            // 
+            // materialSingleLineTextField1
+            // 
+            this.materialSingleLineTextField1.BackColor = System.Drawing.Color.White;
+            this.materialSingleLineTextField1.Depth = 0;
+            this.materialSingleLineTextField1.Hint = "Set Plug-in Location";
+            this.materialSingleLineTextField1.Location = new System.Drawing.Point(7, 6);
+            this.materialSingleLineTextField1.MaxLength = 32767;
+            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
+            this.materialSingleLineTextField1.PasswordChar = '\0';
+            this.materialSingleLineTextField1.SelectedText = "";
+            this.materialSingleLineTextField1.SelectionLength = 0;
+            this.materialSingleLineTextField1.SelectionStart = 0;
+            this.materialSingleLineTextField1.Size = new System.Drawing.Size(543, 23);
+            this.materialSingleLineTextField1.TabIndex = 3;
+            this.materialSingleLineTextField1.TabStop = false;
+            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
+            this.materialSingleLineTextField1.Click += new System.EventHandler(this.materialSingleLineTextField1_Click);
+            // 
+            // materialTabSelector1
+            // 
+            this.materialTabSelector1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
+            this.materialTabSelector1.Depth = 0;
+            this.materialTabSelector1.Location = new System.Drawing.Point(0, 59);
+            this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabSelector1.Name = "materialTabSelector1";
+            this.materialTabSelector1.Size = new System.Drawing.Size(566, 44);
+            this.materialTabSelector1.TabIndex = 1;
+            this.materialTabSelector1.Text = "materialTabSelector1";
+            // 
             // FormSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -152,11 +325,14 @@
             this.Controls.Add(this.materialTabControl1);
             this.Name = "FormSetting";
             this.Text = "FormSetting";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSetting_FormClosing);
             this.materialTabControl1.ResumeLayout(false);
-            this.BasicSetting.ResumeLayout(false);
-            this.BasicSetting.PerformLayout();
-            this.WallPaperSetting.ResumeLayout(false);
-            this.WallPaperSetting.PerformLayout();
+            this.tabPageBasic.ResumeLayout(false);
+            this.tabPageBasic.PerformLayout();
+            this.tabPageWallPaper.ResumeLayout(false);
+            this.tabPageWallPaper.PerformLayout();
+            this.tabPagePlugin.ResumeLayout(false);
+            this.tabPagePlugin.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -164,11 +340,21 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
-        private System.Windows.Forms.TabPage BasicSetting;
+        private System.Windows.Forms.TabPage tabPageBasic;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private MaterialSkin.Controls.MaterialSingleLineTextField TextFieldImageLocation;
-        private System.Windows.Forms.TabPage WallPaperSetting;
+        private System.Windows.Forms.TabPage tabPageWallPaper;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
+        private System.Windows.Forms.TabPage tabPagePlugin;
+        private System.Windows.Forms.ListBox listBox1;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton3;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField4;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField5;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField3;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton4;
     }
 }
