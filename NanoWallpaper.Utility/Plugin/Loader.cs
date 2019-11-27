@@ -15,12 +15,8 @@ namespace NanoWallpaper.Utility.Plugin
             Type interfaceType = typeof(T);
             List<string> implementations = new List<string>();
 
-            //TODO: perform checks to ensure type is valid
-
             foreach (var file in fileNames)
             {
-                //TODO: add proper file handling here and limit files to check
-                //try/catch added in place of ensure files are not .dll
                 try
                 {
                     foreach (var type in System.Reflection.Assembly.LoadFile(file).GetTypes())
@@ -36,7 +32,8 @@ namespace NanoWallpaper.Utility.Plugin
             return implementations;
         }
 
-        public static T LoadItem<T>(string fileName, string name, D2DForm form, Point location, Size size)
+        //public static T LoadItem<T>(string fileName, string name, D2DForm form, Point location, Size size)
+        public static T LoadItem<T>(string fileName, string name, params object[] initData)
         {
             Type interfaceType = typeof(T);
 
@@ -44,7 +41,7 @@ namespace NanoWallpaper.Utility.Plugin
             {
                 if (interfaceType.IsAssignableFrom(type) && interfaceType != type && type.Name == name)
                 {
-                    T instance = (T) Activator.CreateInstance(type, form, location, size);
+                    T instance = (T) Activator.CreateInstance(type, initData);
 
                     return instance;
                 }
@@ -53,7 +50,8 @@ namespace NanoWallpaper.Utility.Plugin
             return default;
         }
 
-        public static T LoadItem<T>(string[] fileArray, string name, D2DForm form, Point location, Size size)
+        //public static T LoadItem<T>(string[] fileArray, string name, D2DForm form, Point location, Size size)
+        public static T LoadItem<T>(string[] fileArray, string name, params object[] initData)
         {
             Type interfaceType = typeof(T);
 
@@ -63,13 +61,12 @@ namespace NanoWallpaper.Utility.Plugin
                 {
                     if (interfaceType.IsAssignableFrom(type) && interfaceType != type && type.FullName == name)
                     {
-                        T instance = (T)Activator.CreateInstance(type, form, location, size);
+                        T instance = (T)Activator.CreateInstance(type, initData);
 
                         return instance;
                     }
                 }
             }
-
             return default;
         }
     }

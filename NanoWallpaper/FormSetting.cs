@@ -187,8 +187,14 @@ namespace NanoWallpaper
 
                 treeView1.Nodes.Remove(selectNode);
 
-                (selectNode?.Parent.Tag as NanoD2dCollection)?.Remove(selectNode.Tag as NanoD2d);
-
+                if (selectNode.Parent == null)
+                {
+                    wallpaper.controls.Remove(selectNode.Tag as NanoD2d);
+                }
+                else
+                {
+                    (selectNode?.Parent.Tag as NanoD2dCollection)?.Remove(selectNode.Tag as NanoD2d);
+                }
             }
         }
 
