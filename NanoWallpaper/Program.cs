@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using NanoWallpaper.Utility;
 
 namespace NanoWallpaper
@@ -63,6 +64,11 @@ namespace NanoWallpaper
             SettingData.LoadSetting();
 
             Application.Run(new FormWallpaper(workerw));
+
+            RegistryKey theCurrentMachine = Registry.CurrentUser;
+            RegistryKey theControlPanel = theCurrentMachine.OpenSubKey("Control Panel");
+            RegistryKey theDesktop = theControlPanel.OpenSubKey("Desktop");
+            Win32Api.SystemParametersInfo(Win32Api.SPI_SETDESKWALLPAPER, 0, Convert.ToString(theDesktop.GetValue("Wallpaper")), Win32Api.SPIF_UPDATEINIFILE);
         }
     }
 }
