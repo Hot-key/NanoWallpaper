@@ -65,10 +65,7 @@ namespace NanoWallpaper
 
         public static void SaveWallPaperSetting(NanoD2dCollection mainForm)
         {
-            var serializer = new SharpSerializer();
-
-            serializer.Serialize(mainForm, SettingData.FormFilePos);
-            //File.WriteAllText(SettingData.FormFilePos, JsonConvert.SerializeObject(mainForm));
+            File.WriteAllText(SettingData.FormFilePos, mainForm.OnSave().ToString());
         }
 
         public static void SavePluginSetting(params string[] pluginList)

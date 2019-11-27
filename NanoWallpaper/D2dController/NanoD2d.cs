@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NanoWallpaper.ControllerInterface;
+using Newtonsoft.Json.Linq;
 using unvell.D2DLib;
 
 namespace NanoWallpaper.D2dController
@@ -46,6 +47,39 @@ namespace NanoWallpaper.D2dController
 
         public virtual void OnPaint(Point point)
         {
+        }
+
+        public virtual JObject OnSave()
+        {
+            JObject tmpJObject = new JObject();
+            JObject sizeJObject = new JObject();
+            JObject locationJObject = new JObject();
+
+            sizeJObject.Add("Height", this.Size.Height);
+            sizeJObject.Add("Width", this.Size.Width);
+
+            locationJObject.Add("X", this.Location.X);
+            locationJObject.Add("Y", this.Location.Y);
+
+            tmpJObject.Add("Size", sizeJObject);
+            tmpJObject.Add("Location", locationJObject);
+            tmpJObject.Add("Name", Name);
+            tmpJObject.Add("Type", this.GetType().FullName);
+
+            if (this is NanoD2dCollection collection)
+            {
+                JArray subDataJArray = new JArray();
+
+                foreach (var nanoD2d in collection.innerCol)
+                {
+                    subDataJArray.Add(nanoD2d.OnSave());
+                }
+
+                tmpJObject.Add("SubData", subDataJArray);
+            }
+
+
+            return tmpJObject;
         }
     }
 }

@@ -11,7 +11,9 @@ using Gma.System.MouseKeyHook;
 using NanoWallpaper.ControllerInterface;
 using NanoWallpaper.D2dController;
 using NanoWallpaper.Utility;
+using NanoWallpaper.Utility.Plugin;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Polenter.Serialization;
 using unvell.D2DLib;
 using unvell.D2DLib.WinForm;
@@ -28,6 +30,8 @@ namespace NanoWallpaper
 
         private List<NanoD2d> MouseDownList = new List<NanoD2d>();
 
+        private NanoD2d selectControl;
+
         public NanoD2dCollection controls = new NanoD2dCollection();
 
         //private FormSetting settingForm;
@@ -42,25 +46,27 @@ namespace NanoWallpaper
 
             //settingForm = new FormSetting(this);
 
-            NanoD2dTitlePanel nanoPanel1 = new NanoD2dTitlePanel(this, new Point(700, 400), new Size(800, 700));
-            NanoD2dTitlePanel nanoPanel1_1 = new NanoD2dTitlePanel(this, new Point(65, 15), new Size(250, 340));
-            NanoD2dTitlePanel nanoPanel1_1_1 = new NanoD2dTitlePanel(this, new Point(65, 15), new Size(200, 200));
+            //NanoD2dTitlePanel nanoPanel1 = new NanoD2dTitlePanel(this, new Point(700, 400), new Size(800, 700))
+            //{
+            //    Name = "panel1"
+            //};
+            //NanoD2dTitlePanel nanoPanel1_1 = new NanoD2dTitlePanel(this, new Point(65, 50), new Size(250, 340))
+            //{
+            //    Name = "panel1-1"
+            //};
+            //NanoD2dTitlePanel nanoPanel1_2 = new NanoD2dTitlePanel(this, new Point(265, 55), new Size(250, 340))
+            //{
+            //    Name = "panel1-2"
+            //};
+            //NanoD2dTitlePanel nanoPanel1_1_1 = new NanoD2dTitlePanel(this, new Point(65, 15), new Size(200, 200))
+            //{
+            //    Name = "panel1-1-1"
+            //};
 
-            controls.Add(nanoPanel1);
-            nanoPanel1.Add(nanoPanel1_1);
-            nanoPanel1_1.Add(nanoPanel1_1_1);
-
-            NanoD2dTitlePanel nanoPanel2 = new NanoD2dTitlePanel(this, new Point(100, 400), new Size(800, 700));
-            NanoD2dTitlePanel nanoPanel2_1 = new NanoD2dTitlePanel(this, new Point(165, 115), new Size(430, 240));
-
-            controls.Add(nanoPanel2);
-            nanoPanel2.Add(nanoPanel2_1);
-
-            NanoD2dTitlePanel nanoPanel3 = new NanoD2dTitlePanel(this, new Point(100, 400), new Size(800, 700));
-            NanoD2dPanel nanoPanel3_1 = new NanoD2dPanel(this, new Point(165, 115), new Size(430, 240));
-
-            controls.Add(nanoPanel3);
-            nanoPanel3.Add(nanoPanel3_1);
+            //controls.Add(nanoPanel1);
+            //nanoPanel1.Add(nanoPanel1_1);
+            //nanoPanel1.Add(nanoPanel1_2);
+            //nanoPanel1_1.Add(nanoPanel1_1_1);
 
             //NanoGitLog gitLog = new NanoGitLog(this, new Point(1100,300), new Size(722, 108));
 
@@ -84,6 +90,7 @@ namespace NanoWallpaper
             Subscribe();
 
             LoadSetting();
+            LoadWallpaper();
         }
 
         public void Subscribe()
@@ -251,6 +258,13 @@ namespace NanoWallpaper
             {
                 nanoD2d.OnRender(g);
             }
+
+
+            if (selectControl != null)
+            {
+                var tmpRect1 = new D2DRect(selectControl.AbsolutePosition.X, selectControl.AbsolutePosition.Y, selectControl.Size.Width, selectControl.Size.Height);
+                g.FillRectangle(tmpRect1, D2DColor.FromGDIColor(Color.FromArgb(80, 0, 0, 255)));
+            }
         }
 
         private void FormWallpaper_FormClosed(object sender, FormClosedEventArgs e)
@@ -270,9 +284,40 @@ namespace NanoWallpaper
             return controlList;
         }
 
-        public void SaveWallpaper()
+        public void LoadWallpaper()
         {
+            if (SettingData.WallPaperFormJosn.Length > 10)
+            {
+                JObject saveDataJObject = JObject.Parse(SettingData.WallPaperFormJosn);
 
+                // 최상위 json 데이터는 비어있는 값이므로 SubData부터 탐색을 시작함
+                this.controls.AddRange(LoadControl(saveDataJObject).ToArray());
+            }
+        }
+
+        public List<NanoD2d> LoadControl(JObject control)
+        {
+            List<NanoD2d> dataList = new List<NanoD2d>();
+            foreach (var jToken in control["SubData"])
+            {
+                var controlData = (JObject) jToken;
+
+                NanoD2d instance = Loader.LoadItem<NanoD2d>(SettingData.PluginDataList.ToArray(), controlData["Type"].ToString(), this, new Point(controlData["Location"]["X"].ToObject<int>(), controlData["Location"]["Y"].ToObject<int>()), new Size(controlData["Size"]["Width"].ToObject<int>(), controlData["Size"]["Height"].ToObject<int>()));
+                dataList.Add(instance);
+
+                instance.Name = controlData["Name"].ToString();
+
+                if (controlData["SubData"].Children().Any())
+                {
+                    (instance as NanoD2dCollection)?.AddRange(LoadControl(controlData).ToArray());
+                }
+            }
+            return dataList;
+        }
+
+        public void showControl(NanoD2d control)
+        {
+            selectControl = control;
         }
     }
 }

@@ -41,6 +41,10 @@ namespace NanoWallpaper
                 var tmpStrings = pluginDataInfo.Value.Split('\\');
                 comboBox1.Items.Add($"{pluginDataInfo.Key} - {tmpStrings.Skip(tmpStrings.Length - 1).First()}");
             }
+
+            SetTreeViewData(null, wallpaper.controls);
+
+            treeView1.ExpandAll();
         }
 
         private void TextFieldImageLocation_Click(object sender, EventArgs e)
@@ -87,16 +91,47 @@ namespace NanoWallpaper
 
         private void FormSetting_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Hide();
-            e.Cancel = true;
+            wallpaper.showControl(null);
         }
 
         private void materialRaisedButton4_Click(object sender, EventArgs e)
         {
             var name = comboBox1.SelectedItem.ToString().Split('-')[0].Trim();
             var controlD2d = Loader.LoadItem<NanoD2d>(SettingData.PluginDataString[name], name, wallpaper, new Point(Convert.ToInt32(materialSingleLineTextField3.Text), Convert.ToInt32(materialSingleLineTextField4.Text)), new Size(Convert.ToInt32(materialSingleLineTextField2.Text), Convert.ToInt32(materialSingleLineTextField5.Text)));
+            controlD2d.Name = materialSingleLineTextField6.Text;
 
             wallpaper.controls.Add(controlD2d);
+        }
+
+        private void SetTreeViewData(TreeNode startNode, NanoD2dCollection controls)
+        {
+            foreach (var control in controls)
+            {
+                TreeNode tmpNode = new TreeNode(control.Name)
+                {
+                    Tag = control
+                };
+
+                if (startNode == null)
+                {
+                    treeView1.Nodes.Add(tmpNode);
+                }
+                else
+                {
+                    startNode.Nodes.Add(tmpNode);
+                }
+
+                if (control is NanoD2dCollection subControls)
+                {
+                    SetTreeViewData(tmpNode, subControls);
+                }
+            }
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            var selectedNode = treeView1.SelectedNode.Tag as NanoD2d;
+            wallpaper.showControl(selectedNode);
         }
     }
 }

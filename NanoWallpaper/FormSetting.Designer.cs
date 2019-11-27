@@ -40,15 +40,18 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.materialRaisedButton4 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.tabPageControl = new System.Windows.Forms.TabPage();
             this.tabPagePlugin = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.materialRaisedButton3 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.tabPageControl = new System.Windows.Forms.TabPage();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.materialSingleLineTextField6 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialTabControl1.SuspendLayout();
             this.tabPageBasic.SuspendLayout();
             this.tabPageWallPaper.SuspendLayout();
+            this.tabPageControl.SuspendLayout();
             this.tabPagePlugin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,6 +125,7 @@
             // tabPageWallPaper
             // 
             this.tabPageWallPaper.BackColor = System.Drawing.Color.White;
+            this.tabPageWallPaper.Controls.Add(this.materialSingleLineTextField6);
             this.tabPageWallPaper.Controls.Add(this.materialSingleLineTextField4);
             this.tabPageWallPaper.Controls.Add(this.materialSingleLineTextField5);
             this.tabPageWallPaper.Controls.Add(this.materialSingleLineTextField3);
@@ -142,7 +146,7 @@
             this.materialSingleLineTextField4.BackColor = System.Drawing.Color.White;
             this.materialSingleLineTextField4.Depth = 0;
             this.materialSingleLineTextField4.Hint = "Set Y Pos";
-            this.materialSingleLineTextField4.Location = new System.Drawing.Point(284, 32);
+            this.materialSingleLineTextField4.Location = new System.Drawing.Point(284, 61);
             this.materialSingleLineTextField4.MaxLength = 32767;
             this.materialSingleLineTextField4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialSingleLineTextField4.Name = "materialSingleLineTextField4";
@@ -161,7 +165,7 @@
             this.materialSingleLineTextField5.BackColor = System.Drawing.Color.White;
             this.materialSingleLineTextField5.Depth = 0;
             this.materialSingleLineTextField5.Hint = "Set Y Size";
-            this.materialSingleLineTextField5.Location = new System.Drawing.Point(283, 61);
+            this.materialSingleLineTextField5.Location = new System.Drawing.Point(283, 90);
             this.materialSingleLineTextField5.MaxLength = 32767;
             this.materialSingleLineTextField5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialSingleLineTextField5.Name = "materialSingleLineTextField5";
@@ -179,7 +183,7 @@
             this.materialSingleLineTextField3.BackColor = System.Drawing.Color.White;
             this.materialSingleLineTextField3.Depth = 0;
             this.materialSingleLineTextField3.Hint = "Set X pos";
-            this.materialSingleLineTextField3.Location = new System.Drawing.Point(7, 32);
+            this.materialSingleLineTextField3.Location = new System.Drawing.Point(7, 61);
             this.materialSingleLineTextField3.MaxLength = 32767;
             this.materialSingleLineTextField3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialSingleLineTextField3.Name = "materialSingleLineTextField3";
@@ -197,7 +201,7 @@
             this.materialSingleLineTextField2.BackColor = System.Drawing.Color.White;
             this.materialSingleLineTextField2.Depth = 0;
             this.materialSingleLineTextField2.Hint = "Set X Size";
-            this.materialSingleLineTextField2.Location = new System.Drawing.Point(6, 61);
+            this.materialSingleLineTextField2.Location = new System.Drawing.Point(6, 90);
             this.materialSingleLineTextField2.MaxLength = 32767;
             this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
@@ -253,6 +257,16 @@
             this.materialRaisedButton2.Text = "Save WallPaper";
             this.materialRaisedButton2.UseVisualStyleBackColor = true;
             this.materialRaisedButton2.Click += new System.EventHandler(this.materialRaisedButton2_Click);
+            // 
+            // tabPageControl
+            // 
+            this.tabPageControl.Controls.Add(this.treeView1);
+            this.tabPageControl.Location = new System.Drawing.Point(4, 22);
+            this.tabPageControl.Name = "tabPageControl";
+            this.tabPageControl.Size = new System.Drawing.Size(558, 391);
+            this.tabPageControl.TabIndex = 4;
+            this.tabPageControl.Text = "controlSetting";
+            this.tabPageControl.UseVisualStyleBackColor = true;
             // 
             // tabPagePlugin
             // 
@@ -331,14 +345,31 @@
             this.materialTabSelector1.TabIndex = 1;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // tabPageControl
+            // treeView1
             // 
-            this.tabPageControl.Location = new System.Drawing.Point(4, 22);
-            this.tabPageControl.Name = "tabPageControl";
-            this.tabPageControl.Size = new System.Drawing.Size(558, 391);
-            this.tabPageControl.TabIndex = 4;
-            this.tabPageControl.Text = "controlSetting";
-            this.tabPageControl.UseVisualStyleBackColor = true;
+            this.treeView1.Location = new System.Drawing.Point(8, 3);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(542, 380);
+            this.treeView1.TabIndex = 0;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
+            // materialSingleLineTextField6
+            // 
+            this.materialSingleLineTextField6.BackColor = System.Drawing.Color.White;
+            this.materialSingleLineTextField6.Depth = 0;
+            this.materialSingleLineTextField6.Hint = "Set Name";
+            this.materialSingleLineTextField6.Location = new System.Drawing.Point(6, 32);
+            this.materialSingleLineTextField6.MaxLength = 32767;
+            this.materialSingleLineTextField6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField6.Name = "materialSingleLineTextField6";
+            this.materialSingleLineTextField6.PasswordChar = '\0';
+            this.materialSingleLineTextField6.SelectedText = "";
+            this.materialSingleLineTextField6.SelectionLength = 0;
+            this.materialSingleLineTextField6.SelectionStart = 0;
+            this.materialSingleLineTextField6.Size = new System.Drawing.Size(268, 23);
+            this.materialSingleLineTextField6.TabIndex = 9;
+            this.materialSingleLineTextField6.TabStop = false;
+            this.materialSingleLineTextField6.UseSystemPasswordChar = false;
             // 
             // FormSetting
             // 
@@ -355,6 +386,7 @@
             this.tabPageBasic.PerformLayout();
             this.tabPageWallPaper.ResumeLayout(false);
             this.tabPageWallPaper.PerformLayout();
+            this.tabPageControl.ResumeLayout(false);
             this.tabPagePlugin.ResumeLayout(false);
             this.tabPagePlugin.PerformLayout();
             this.ResumeLayout(false);
@@ -381,5 +413,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton4;
         private System.Windows.Forms.TabPage tabPageControl;
+        private System.Windows.Forms.TreeView treeView1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField6;
     }
 }

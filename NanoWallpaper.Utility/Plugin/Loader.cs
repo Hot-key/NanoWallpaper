@@ -52,5 +52,25 @@ namespace NanoWallpaper.Utility.Plugin
 
             return default;
         }
+
+        public static T LoadItem<T>(string[] fileArray, string name, D2DForm form, Point location, Size size)
+        {
+            Type interfaceType = typeof(T);
+
+            foreach (var fileName in fileArray)
+            {
+                foreach (var type in System.Reflection.Assembly.LoadFile(fileName).GetTypes())
+                {
+                    if (interfaceType.IsAssignableFrom(type) && interfaceType != type && type.FullName == name)
+                    {
+                        T instance = (T)Activator.CreateInstance(type, form, location, size);
+
+                        return instance;
+                    }
+                }
+            }
+
+            return default;
+        }
     }
 }

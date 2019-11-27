@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NanoWallpaper.ControllerInterface;
+using Newtonsoft.Json.Linq;
 
 namespace NanoWallpaper.D2dController
 {
@@ -46,6 +47,15 @@ namespace NanoWallpaper.D2dController
         {
             item.Parent = this;
             innerCol.Add(item);
+        }
+
+        public void AddRange(params NanoD2d[] items)
+        {
+            foreach (var item in items)
+            {
+                item.Parent = this;
+                innerCol.Add(item);
+            }
         }
 
         public void Clear()
@@ -118,6 +128,35 @@ namespace NanoWallpaper.D2dController
                 }
             }
             return result;
+        }
+
+        public override JObject OnSave()
+        {
+            JObject tmpJObject = new JObject();
+            JObject sizeJObject = new JObject();
+            JObject locationJObject = new JObject();
+            JArray subDataJArray = new JArray();
+
+            sizeJObject.Add("Height", this.Size.Height);
+            sizeJObject.Add("Width", this.Size.Width);
+
+            locationJObject.Add("X", this.Location.X);
+            locationJObject.Add("Y", this.Location.Y);
+
+            tmpJObject.Add("Size", sizeJObject);
+            tmpJObject.Add("Location", locationJObject);
+            tmpJObject.Add("Name", Name);
+            tmpJObject.Add("Type", this.GetType().FullName);
+
+            foreach (var nanoD2d in innerCol)
+            {
+                subDataJArray.Add(nanoD2d.OnSave());
+            }
+
+            tmpJObject.Add("SubData", subDataJArray);
+
+            return tmpJObject;
+
         }
     }
 }
