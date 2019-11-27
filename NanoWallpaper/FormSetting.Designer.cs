@@ -30,9 +30,11 @@
         {
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPageBasic = new System.Windows.Forms.TabPage();
+            this.materialRaisedButton5 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TextFieldImageLocation = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tabPageWallPaper = new System.Windows.Forms.TabPage();
+            this.materialSingleLineTextField6 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialSingleLineTextField4 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialSingleLineTextField5 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -41,13 +43,15 @@
             this.materialRaisedButton4 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabPageControl = new System.Windows.Forms.TabPage();
+            this.materialRaisedButton6 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPagePlugin = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.materialRaisedButton3 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.materialSingleLineTextField6 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.materialRaisedButton8 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabControl1.SuspendLayout();
             this.tabPageBasic.SuspendLayout();
             this.tabPageWallPaper.SuspendLayout();
@@ -75,6 +79,7 @@
             // tabPageBasic
             // 
             this.tabPageBasic.BackColor = System.Drawing.Color.White;
+            this.tabPageBasic.Controls.Add(this.materialRaisedButton5);
             this.tabPageBasic.Controls.Add(this.materialRaisedButton1);
             this.tabPageBasic.Controls.Add(this.TextFieldImageLocation);
             this.tabPageBasic.Location = new System.Drawing.Point(4, 22);
@@ -83,6 +88,23 @@
             this.tabPageBasic.Size = new System.Drawing.Size(558, 391);
             this.tabPageBasic.TabIndex = 1;
             this.tabPageBasic.Text = "Basic Setting";
+            // 
+            // materialRaisedButton5
+            // 
+            this.materialRaisedButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.materialRaisedButton5.AutoSize = true;
+            this.materialRaisedButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton5.Depth = 0;
+            this.materialRaisedButton5.Icon = null;
+            this.materialRaisedButton5.Location = new System.Drawing.Point(6, 349);
+            this.materialRaisedButton5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton5.Name = "materialRaisedButton5";
+            this.materialRaisedButton5.Primary = true;
+            this.materialRaisedButton5.Size = new System.Drawing.Size(50, 36);
+            this.materialRaisedButton5.TabIndex = 3;
+            this.materialRaisedButton5.Text = "Exit";
+            this.materialRaisedButton5.UseVisualStyleBackColor = true;
+            this.materialRaisedButton5.Click += new System.EventHandler(this.materialRaisedButton5_Click);
             // 
             // materialRaisedButton1
             // 
@@ -139,6 +161,24 @@
             this.tabPageWallPaper.Size = new System.Drawing.Size(558, 391);
             this.tabPageWallPaper.TabIndex = 2;
             this.tabPageWallPaper.Text = "WallPaperSetting";
+            // 
+            // materialSingleLineTextField6
+            // 
+            this.materialSingleLineTextField6.BackColor = System.Drawing.Color.White;
+            this.materialSingleLineTextField6.Depth = 0;
+            this.materialSingleLineTextField6.Hint = "Set Name";
+            this.materialSingleLineTextField6.Location = new System.Drawing.Point(6, 32);
+            this.materialSingleLineTextField6.MaxLength = 32767;
+            this.materialSingleLineTextField6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField6.Name = "materialSingleLineTextField6";
+            this.materialSingleLineTextField6.PasswordChar = '\0';
+            this.materialSingleLineTextField6.SelectedText = "";
+            this.materialSingleLineTextField6.SelectionLength = 0;
+            this.materialSingleLineTextField6.SelectionStart = 0;
+            this.materialSingleLineTextField6.Size = new System.Drawing.Size(268, 23);
+            this.materialSingleLineTextField6.TabIndex = 9;
+            this.materialSingleLineTextField6.TabStop = false;
+            this.materialSingleLineTextField6.UseSystemPasswordChar = false;
             // 
             // materialSingleLineTextField4
             // 
@@ -260,6 +300,9 @@
             // 
             // tabPageControl
             // 
+            this.tabPageControl.Controls.Add(this.materialRaisedButton8);
+            this.tabPageControl.Controls.Add(this.listBox2);
+            this.tabPageControl.Controls.Add(this.materialRaisedButton6);
             this.tabPageControl.Controls.Add(this.treeView1);
             this.tabPageControl.Location = new System.Drawing.Point(4, 22);
             this.tabPageControl.Name = "tabPageControl";
@@ -267,6 +310,37 @@
             this.tabPageControl.TabIndex = 4;
             this.tabPageControl.Text = "controlSetting";
             this.tabPageControl.UseVisualStyleBackColor = true;
+            // 
+            // materialRaisedButton6
+            // 
+            this.materialRaisedButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialRaisedButton6.AutoSize = true;
+            this.materialRaisedButton6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton6.Depth = 0;
+            this.materialRaisedButton6.Icon = null;
+            this.materialRaisedButton6.Location = new System.Drawing.Point(475, 347);
+            this.materialRaisedButton6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton6.Name = "materialRaisedButton6";
+            this.materialRaisedButton6.Primary = true;
+            this.materialRaisedButton6.Size = new System.Drawing.Size(75, 36);
+            this.materialRaisedButton6.TabIndex = 1;
+            this.materialRaisedButton6.Text = "Remove";
+            this.materialRaisedButton6.UseVisualStyleBackColor = true;
+            this.materialRaisedButton6.Click += new System.EventHandler(this.materialRaisedButton6_Click);
+            // 
+            // treeView1
+            // 
+            this.treeView1.AllowDrop = true;
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.treeView1.Location = new System.Drawing.Point(8, 3);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(397, 380);
+            this.treeView1.TabIndex = 0;
+            this.treeView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView1_ItemDrag);
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView1_DragDrop);
+            this.treeView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView1_DragEnter);
             // 
             // tabPagePlugin
             // 
@@ -345,31 +419,32 @@
             this.materialTabSelector1.TabIndex = 1;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // treeView1
+            // listBox2
             // 
-            this.treeView1.Location = new System.Drawing.Point(8, 3);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(542, 380);
-            this.treeView1.TabIndex = 0;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.IntegralHeight = false;
+            this.listBox2.ItemHeight = 12;
+            this.listBox2.Location = new System.Drawing.Point(411, 3);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(139, 296);
+            this.listBox2.TabIndex = 2;
             // 
-            // materialSingleLineTextField6
+            // materialRaisedButton8
             // 
-            this.materialSingleLineTextField6.BackColor = System.Drawing.Color.White;
-            this.materialSingleLineTextField6.Depth = 0;
-            this.materialSingleLineTextField6.Hint = "Set Name";
-            this.materialSingleLineTextField6.Location = new System.Drawing.Point(6, 32);
-            this.materialSingleLineTextField6.MaxLength = 32767;
-            this.materialSingleLineTextField6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField6.Name = "materialSingleLineTextField6";
-            this.materialSingleLineTextField6.PasswordChar = '\0';
-            this.materialSingleLineTextField6.SelectedText = "";
-            this.materialSingleLineTextField6.SelectionLength = 0;
-            this.materialSingleLineTextField6.SelectionStart = 0;
-            this.materialSingleLineTextField6.Size = new System.Drawing.Size(268, 23);
-            this.materialSingleLineTextField6.TabIndex = 9;
-            this.materialSingleLineTextField6.TabStop = false;
-            this.materialSingleLineTextField6.UseSystemPasswordChar = false;
+            this.materialRaisedButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialRaisedButton8.AutoSize = true;
+            this.materialRaisedButton8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton8.Depth = 0;
+            this.materialRaisedButton8.Icon = null;
+            this.materialRaisedButton8.Location = new System.Drawing.Point(449, 305);
+            this.materialRaisedButton8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton8.Name = "materialRaisedButton8";
+            this.materialRaisedButton8.Primary = true;
+            this.materialRaisedButton8.Size = new System.Drawing.Size(101, 36);
+            this.materialRaisedButton8.TabIndex = 4;
+            this.materialRaisedButton8.Text = "set parent";
+            this.materialRaisedButton8.UseVisualStyleBackColor = true;
+            this.materialRaisedButton8.Click += new System.EventHandler(this.materialRaisedButton8_Click);
             // 
             // FormSetting
             // 
@@ -387,6 +462,7 @@
             this.tabPageWallPaper.ResumeLayout(false);
             this.tabPageWallPaper.PerformLayout();
             this.tabPageControl.ResumeLayout(false);
+            this.tabPageControl.PerformLayout();
             this.tabPagePlugin.ResumeLayout(false);
             this.tabPagePlugin.PerformLayout();
             this.ResumeLayout(false);
@@ -415,5 +491,9 @@
         private System.Windows.Forms.TabPage tabPageControl;
         private System.Windows.Forms.TreeView treeView1;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField6;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton5;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton6;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton8;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }

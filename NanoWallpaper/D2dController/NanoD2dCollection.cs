@@ -45,6 +45,7 @@ namespace NanoWallpaper.D2dController
 
         public void Add(NanoD2d item)
         {
+            FormWallpaper.controlNames.Add(item.Name);
             item.Parent = this;
             innerCol.Add(item);
         }
@@ -53,6 +54,7 @@ namespace NanoWallpaper.D2dController
         {
             foreach (var item in items)
             {
+                FormWallpaper.controlNames.Add(item.Name);
                 item.Parent = this;
                 innerCol.Add(item);
             }

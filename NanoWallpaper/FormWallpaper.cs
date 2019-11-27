@@ -34,6 +34,8 @@ namespace NanoWallpaper
 
         public NanoD2dCollection controls = new NanoD2dCollection();
 
+        public static List<string> controlNames = new List<string>();
+
         //private FormSetting settingForm;
 
         public FormWallpaper(IntPtr workerw)
@@ -254,7 +256,7 @@ namespace NanoWallpaper
                 }
             }
 
-            foreach (var nanoD2d in controls)
+            foreach (var nanoD2d in controls.Reverse())
             {
                 nanoD2d.OnRender(g);
             }
